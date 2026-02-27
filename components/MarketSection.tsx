@@ -118,7 +118,7 @@ export default function MarketSection() {
 
         {/* Sous-titre */}
         <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12 text-lg leading-relaxed">
-          Le Mobile Money est devenu le compte bancaire de fait pour des millions d'Africains. Pourtant, l'infrastructure de cash-in/cash-out reste insuffisante, limitée et peu fiable.
+          Le Mobile Money est devenu le compte bancaire de fait pour des millions d&apos;Africains. Pourtant, l&apos;infrastructure de cash-in/cash-out reste insuffisante, limitée et peu fiable.
         </p>
 
         {/* Grille de statistiques */}

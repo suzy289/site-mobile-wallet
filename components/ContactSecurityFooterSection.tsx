@@ -131,7 +131,7 @@ export default function ContactSecurityFooterSection() {
               <div className="text-white">
                 <h3 className="text-xl md:text-2xl font-bold mb-2">Ne manquez pas cette opportunité</h3>
                 <p className="text-white/90 text-sm md:text-base">
-                  Les territoires exclusifs sont limités. Réservez votre zone dès aujourd'hui.
+                  Les territoires exclusifs sont limités. Réservez votre zone dès aujourd&apos;hui.
                 </p>
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function ContactSecurityFooterSection() {
                       Réservez votre rendez-vous stratégique
                     </h3>
                     <p className="text-gray-300 text-sm md:text-base mb-8">
-                      Prenez un rendez-vous avec l'un de nos experts et discutons de votre projet.
+                      Prenez un rendez-vous avec l&apos;un de nos experts et discutons de votre projet.
                     </p>
 
                     {/* Garanties */}
@@ -179,7 +179,7 @@ export default function ContactSecurityFooterSection() {
                         <svg className="w-5 h-5 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                         </svg>
-                        <span className="text-sm md:text-base">Disponible pour toute l'Afrique</span>
+                        <span className="text-sm md:text-base">Disponible pour toute l&apos;Afrique</span>
                       </div>
                     </div>
                   </div>
@@ -320,7 +320,7 @@ export default function ContactSecurityFooterSection() {
                 Sécurité de niveau bancaire
               </h2>
               <p className="text-gray-600 text-base md:text-lg mb-8">
-                Nos systèmes sont audités régulièrement et répondent aux normes les plus strictes de l'industrie bancaire.
+                Nos systèmes sont audités régulièrement et répondent aux normes les plus strictes de l&apos;industrie bancaire.
               </p>
 
               {/* Badges de Certification */}
@@ -373,7 +373,7 @@ export default function ContactSecurityFooterSection() {
                 />
               </div>
               <p className="text-white/70 text-sm mb-6">
-                L'infrastructure de cashin et cashout en Afrique
+                L&apos;infrastructure de cashin et cashout en Afrique
               </p>
               {/* Réseaux sociaux */}
               <div className="flex gap-3">

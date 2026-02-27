@@ -173,7 +173,7 @@ export default function SolutionsSection() {
             NOS SOLUTIONS
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A237E] mb-6">
-            7 ans d'expertise au service des GAB Mobile Money en Afrique
+            7 ans d&apos;expertise au service des GAB Mobile Money en Afrique
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto mb-12 leading-relaxed">
             Nous avons pendant plus de 07 ans travaillé avec les meilleurs fournisseurs pour concevoir des GAB Mobile Money entièrement adaptés aux besoins des utilisateurs et pour la rentabilité des partenaires.
@@ -204,7 +204,7 @@ export default function SolutionsSection() {
                 La solution hardware
               </p>
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A237E] mb-2">
-                Des GAB conçus pour l'Afrique, certifiés aux standards mondiaux
+                Des GAB conçus pour l&apos;Afrique, certifiés aux standards mondiaux
               </h3>
               <p className="text-gray-600 text-sm md:text-base">
                 Développé avec les meilleurs fournisseurs de guichets dans le monde

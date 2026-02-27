@@ -245,13 +245,13 @@ export default function ComparisonSection() {
           <div className="bg-[#0D1B2A] rounded-lg shadow-xl p-6 md:p-10 relative overflow-hidden">
             {/* Icône de guillemets orange en haut à gauche (grande) */}
             <div className="absolute top-4 left-4 md:top-6 md:left-6">
-              <div className="text-[#F9A825] text-6xl md:text-7xl font-bold opacity-30 leading-none">"</div>
+              <div className="text-[#F9A825] text-6xl md:text-7xl font-bold opacity-30 leading-none">&quot;</div>
             </div>
 
             {/* Contenu */}
             <div className="relative z-10">
               <p className="text-white text-base md:text-lg leading-relaxed mb-6 md:mb-8 pl-8 md:pl-12">
-                Notre solution est pensée pour les réalités du marché en Afrique — plusieurs opérateurs mobiles money (MTN Mobile Money, Orange Money, Wave, M-Pesa, Airtel Money), les services Money des banques (M2U de UBA, Sara Money de Afriland), et plusieurs services (paiement de factures, Eneo, Camwater, Canal+, et bien d'autres). Tout en un, une solution clé en main pour les franchisés, une mise à jour de valeur pour les institutions, et une expérience tout-en-un qui crée une habitude pour les utilisateurs.
+                Notre solution est pensée pour les réalités du marché en Afrique — plusieurs opérateurs mobiles money (MTN Mobile Money, Orange Money, Wave, M-Pesa, Airtel Money), les services Money des banques (M2U de UBA, Sara Money de Afriland), et plusieurs services (paiement de factures, Eneo, Camwater, Canal+, et bien d&apos;autres). Tout en un, une solution clé en main pour les franchisés, une mise à jour de valeur pour les institutions, et une expérience tout-en-un qui crée une habitude pour les utilisateurs.
               </p>
 
               {/* Tags de services */}

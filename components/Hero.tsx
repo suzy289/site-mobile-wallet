@@ -35,7 +35,7 @@ export default function Hero() {
             {/* Boutons d'action */}
             <div className="flex items-center gap-4 mt-2 md:mt-3">
               <button className="bg-[#F9A825] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#F9A825]/90 transition-colors whitespace-nowrap">
-                Découvrir nos 3 modèles d'investissement
+                Découvrir nos 3 modèles d&apos;investissement
               </button>
               <button className="flex items-center gap-2 text-white hover:text-[#F9A825] transition-colors group">
                 <svg

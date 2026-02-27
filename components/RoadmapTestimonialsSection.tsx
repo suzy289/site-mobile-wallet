@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function RoadmapTestimonialsSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -233,7 +234,7 @@ export default function RoadmapTestimonialsSection() {
               >
                 {/* Guillemets orange en haut à gauche */}
                 <div className="absolute top-4 left-4 text-[#F9A825] text-4xl font-bold opacity-20">
-                  "
+                  &quot;
                 </div>
 
                 {/* Contenu */}
@@ -262,14 +263,14 @@ export default function RoadmapTestimonialsSection() {
                     {testimonial.isFranchise ? (
                       <>
                         {/* Photo de profil circulaire */}
-                        <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#F9A825]">
-                          <img
+                        <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#F9A825] relative">
+                          <Image
                             src={testimonial.logo}
                             alt={testimonial.author}
+                            width={48}
+                            height={48}
                             className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.author)}&background=F9A825&color=fff&size=200`;
-                            }}
+                            unoptimized
                           />
                         </div>
                         <div>

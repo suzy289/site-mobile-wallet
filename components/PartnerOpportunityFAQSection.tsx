@@ -77,7 +77,7 @@ export default function PartnerOpportunityFAQSection() {
                 Devenez Partenaire Pays Exclusif
               </h2>
               <p className="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
-                Prenez la tête de l'expansion dans votre pays. Représentation exclusive et revenus sur l'ensemble du réseau national.
+                Prenez la tête de l&apos;expansion dans votre pays. Représentation exclusive et revenus sur l&apos;ensemble du réseau national.
               </p>
 
               {/* Badges de pays */}
@@ -135,7 +135,7 @@ export default function PartnerOpportunityFAQSection() {
 
               {/* Bouton CTA avec effet pulse discret */}
               <button className="w-full bg-[#F9A825] text-white font-semibold py-4 px-6 rounded-lg text-base md:text-lg hover:bg-[#F57C00] transition-colors duration-200 shadow-lg hover:shadow-xl animate-pulse-subtle">
-                Contactez l'équipe →
+                Contactez l&apos;équipe →
               </button>
             </div>
           </div>
@@ -204,14 +204,14 @@ export default function PartnerOpportunityFAQSection() {
           {/* Encadré de Contact Final */}
           <div className="bg-[#FFF7ED] rounded-xl p-6 md:p-8 max-w-2xl ml-auto">
             <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-3">
-              Vous avez d'autres questions ?
+              Vous avez d&apos;autres questions ?
             </h3>
             <p className="text-gray-700 text-base md:text-lg mb-6">
               Notre équipe est disponible pour vous accompagner dans votre projet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-[#F9A825] text-white font-semibold py-3 px-6 rounded-lg text-base md:text-lg hover:bg-[#F57C00] transition-colors duration-200 shadow-md hover:shadow-lg">
-                Contactez l'équipe
+                Contactez l&apos;équipe
               </button>
               <button className="bg-white border-2 border-[#F9A825] text-[#F9A825] font-semibold py-3 px-6 rounded-lg text-base md:text-lg hover:bg-[#F9A825] hover:text-white transition-colors duration-200">
                 Consultez la documentation

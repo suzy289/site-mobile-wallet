@@ -146,7 +146,7 @@ export default function AboutPartnershipSection() {
             
             {/* Description */}
             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-              Nous sommes une entreprise technologique basée aux États-Unis et au Cameroun, alliant l'innovation de la Silicon Valley aux réalités du marché africain.
+              Nous sommes une entreprise technologique basée aux États-Unis et au Cameroun, alliant l&apos;innovation de la Silicon Valley aux réalités du marché africain.
             </p>
 
             {/* Logo et badges de localisation */}
@@ -283,7 +283,7 @@ export default function AboutPartnershipSection() {
         {/* Boutons d'Appel à l'Action Finaux */}
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mt-12 md:mt-16">
           <button className="bg-[#F9A825] text-white px-8 md:px-12 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-[#F57C00] transition-colors duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto">
-            Contactez l'équipe
+            Contactez l&apos;équipe
           </button>
           <button className="bg-[#1A237E] text-white px-8 md:px-12 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-[#0D1B2A] transition-colors duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto">
             Consultez le document de présentation

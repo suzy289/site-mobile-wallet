@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function TeamSection() {
   // Direction générale
   const leadership = [
@@ -138,14 +140,13 @@ export default function TeamSection() {
             highlighted ? 'ring-4' : ''
           } mb-4`}
         >
-          <img
+          <Image
             src={image}
             alt={name}
+            width={160}
+            height={160}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              // Fallback vers un placeholder si l'image n'existe pas
-              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=F9A825&color=fff&size=200`;
-            }}
+            unoptimized
           />
         </div>
         <h3 className="font-bold text-[#1A237E] text-base md:text-lg mb-1">{name}</h3>
@@ -162,13 +163,13 @@ export default function TeamSection() {
       <div className="flex flex-col items-center">
         {/* Photo de profil */}
         <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-[#F9A825] mb-6">
-          <img
+          <Image
             src={image}
             alt={name}
+            width={160}
+            height={160}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=F9A825&color=fff&size=200`;
-            }}
+            unoptimized
           />
         </div>
         <h3 className="font-bold text-[#1A237E] text-xl md:text-2xl mb-2">{name}</h3>
@@ -262,7 +263,7 @@ export default function TeamSection() {
 
           {/* Description */}
           <p className="text-white text-base md:text-lg mb-12 max-w-3xl">
-            L'équipe technique internationale qui fait tourner la plateforme
+            L&apos;équipe technique internationale qui fait tourner la plateforme
           </p>
 
           {/* Grille de 4 colonnes */}
@@ -283,13 +284,13 @@ export default function TeamSection() {
                       member.highlighted ? 'ring-4' : ''
                     }`}
                   >
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
+                      width={112}
+                      height={112}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=F9A825&color=fff&size=200`;
-                      }}
+                      unoptimized
                     />
                   </div>
                   <h3 className="font-bold text-white text-base md:text-lg mb-2">{member.name}</h3>

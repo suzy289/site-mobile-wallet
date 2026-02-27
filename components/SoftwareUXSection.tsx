@@ -147,7 +147,7 @@ export default function SoftwareUXSection() {
                 Mobile Wallet ATM & Transaction Control
               </h3>
               <p className="text-gray-300 text-sm md:text-base mb-8">
-                Pilotez l'ensemble de votre réseau de GAB depuis un seul tableau de bord centralisé
+                Pilotez l&apos;ensemble de votre réseau de GAB depuis un seul tableau de bord centralisé
               </p>
 
               {/* Mockup MacBook avec Dashboard */}
@@ -264,7 +264,7 @@ export default function SoftwareUXSection() {
               VUE GAB
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A237E] mb-4 leading-tight">
-              Une expérience utilisateur pensée pour l'Afrique
+              Une expérience utilisateur pensée pour l&apos;Afrique
             </h2>
             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
               Interface intuitive, multilingue, multi-opérateurs — certifiée aux normes internationales
