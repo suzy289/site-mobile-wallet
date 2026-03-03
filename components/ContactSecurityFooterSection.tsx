@@ -331,8 +331,8 @@ export default function ContactSecurityFooterSection() {
                 <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
                   Audits réguliers
                 </span>
-                <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="bg-green-100 text-black font-bold px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   Conformité PCI-DSS

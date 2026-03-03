@@ -112,7 +112,7 @@ export default function MarketSection() {
       <div className="max-w-[1280px] mx-auto px-4 md:px-10 lg:px-20 py-16 md:py-20">
         {/* Titre principal */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6">
-          <span className="text-[#1A237E]">Le Marché du Mobile Money en </span>
+          <span className="text-black">Le Marché du Mobile Money en </span>
           <span className="text-[#F9A825]">Afrique</span>
         </h2>
 
@@ -134,7 +134,7 @@ export default function MarketSection() {
             >
               <div
                 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 ${
-                  stat.highlight ? 'text-[#F9A825]' : 'text-[#1A237E]'
+                  stat.highlight ? 'text-[#F9A825]' : 'text-black'
                 }`}
               >
                 {stat.value}
@@ -150,7 +150,7 @@ export default function MarketSection() {
             {/* Titre "Au Cameroun" à gauche - largeur réduite */}
             <div className="flex items-start gap-4 flex-shrink-0 lg:w-auto">
               <div className="w-1 h-12 bg-[#F9A825] rounded-full"></div>
-              <h3 className="text-2xl md:text-3xl font-bold text-[#1A237E] whitespace-nowrap">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#F9A825] whitespace-nowrap">
                 Au Cameroun
               </h3>
             </div>

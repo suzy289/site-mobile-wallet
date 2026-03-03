@@ -235,8 +235,8 @@ export default function ROISection() {
 
         {/* Note de réassurance */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 text-green-400 text-sm md:text-base">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex items-center gap-2 text-black text-sm md:text-base font-bold">
+            <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>Basé sur les données réelles au CMR</span>

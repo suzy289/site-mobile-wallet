@@ -16,7 +16,7 @@ export default function Partners() {
     <section className="bg-white w-full py-12 md:py-16">
       <div className="max-w-[1280px] mx-auto px-4 md:px-10 lg:px-20">
         {/* Titre */}
-        <h2 className="text-[#1A237E] text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 tracking-[2px] uppercase">
+        <h2 className="text-black text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 tracking-[2px] uppercase">
           NOS PARTENAIRES
         </h2>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import ATMMachine from './ATMMachine';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -15,19 +15,19 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="text-[#F9A825] text-base md:text-lg leading-relaxed mb-2 md:mb-3">
+            <p className="text-white/70 text-base md:text-lg leading-relaxed mb-2 md:mb-3">
               Banques, institutions financières, distributeurs partenaires, super agents et entrepreneurs, notre technologie vous donne accès à la puissance du mobile money.
             </p>
 
             {/* Badges de caractéristiques */}
             <div className="flex gap-2 flex-wrap mb-2 md:mb-3">
-              <span className="bg-[#1A1A1A] border-2 border-[#F9A825] text-white px-3 py-1 rounded-full text-xs md:text-sm">
+              <span className="bg-[#1A1A1A] border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm">
                 Multiopérateurs
               </span>
-              <span className="bg-[#1A1A1A] border-2 border-[#F9A825] text-white px-3 py-1 rounded-full text-xs md:text-sm">
+              <span className="bg-[#1A1A1A] border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm">
                 ROI rapide (Dès 1.1 an)
               </span>
-              <span className="bg-[#1A1A1A] border-2 border-[#F9A825] text-white px-3 py-1 rounded-full text-xs md:text-sm">
+              <span className="bg-[#1A1A1A] border-2 border-white text-white px-3 py-1 rounded-full text-xs md:text-sm">
                 Multiservices
               </span>
             </div>
@@ -47,7 +47,7 @@ export default function Hero() {
                 >
                   <path d="M8 0L6.59 1.41L12.17 7H0v2h12.17l-5.58 5.59L8 16l8-8z" />
                 </svg>
-                <span>Découvrir la technologie</span>
+                <span>Découvrir</span>
               </button>
             </div>
           </div>
@@ -56,30 +56,15 @@ export default function Hero() {
           <div className="relative z-10 h-full flex items-center justify-center">
             <div className="relative w-full h-full flex items-center justify-center">
               {/* Image du GAB */}
-              <div className="relative w-full max-w-[400px] h-full max-h-[600px] flex items-center justify-center">
-                <ATMMachine />
-              </div>
-
-              {/* Badges flottants au-dessus de l'image */}
-              {/* Badge "Dashboard en ligne" - haut gauche */}
-              <div className="hidden lg:block absolute left-[10%] top-[15%] animate-float-gentle z-20">
-                <div className="bg-[#F9A825]/90 backdrop-blur-sm text-black font-semibold text-sm px-4 py-2 rounded-lg border-2 border-[#F9A825] shadow-lg whitespace-nowrap">
-                  Dashboard en ligne
-                </div>
-              </div>
-
-              {/* Badge "100% Automatisé" - haut droite */}
-              <div className="hidden lg:block absolute right-[10%] top-[10%] animate-float-gentle-2 z-20" style={{ animationDelay: '0.5s' }}>
-                <div className="bg-[#F9A825]/90 backdrop-blur-sm text-black font-semibold text-sm px-4 py-2 rounded-lg border-2 border-[#F9A825] shadow-lg whitespace-nowrap">
-                  100% Automatisé
-                </div>
-              </div>
-
-              {/* Badge "Sécurité poussée" - bas droite */}
-              <div className="hidden lg:block absolute right-[10%] bottom-[20%] animate-float-gentle-3 z-20" style={{ animationDelay: '1s' }}>
-                <div className="bg-[#F9A825]/90 backdrop-blur-sm text-black font-semibold text-sm px-4 py-2 rounded-lg border-2 border-[#F9A825] shadow-lg whitespace-nowrap">
-                  Sécurité poussée
-                </div>
+              <div className="relative w-full max-w-[500px] h-full max-h-[700px] flex items-center justify-center">
+                <Image
+                  src="/images/34045da3c91645c7ad121d8ca1ab262f-removebg-preview.png"
+                  alt="GAB Mobile Money automatisé"
+                  width={500}
+                  height={700}
+                  className="w-full h-full object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>

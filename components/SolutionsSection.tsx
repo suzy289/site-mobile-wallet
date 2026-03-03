@@ -133,8 +133,8 @@ export default function SolutionsSection() {
       name: 'Modèle Compact',
       description: 'Idéal pour les petits points de service',
       badge: 'Coffre sécurisé certifié',
-      badgeColor: 'bg-[#1A237E]',
-      image: <CompactATM />,
+      badgeColor: 'bg-[#0D1117]',
+      image: <Image src="/images/modele-compact-gab.png" alt="Modèle Compact GAB Mobile Money" width={400} height={300} className="w-full h-full object-contain" />,
       recommended: false,
     },
     {
@@ -142,15 +142,15 @@ export default function SolutionsSection() {
       description: 'Notre bestseller - haute capacité',
       badge: 'Standards bancaires - Conformes',
       badgeColor: 'bg-gradient-to-r from-[#F9A825] to-[#F57C00]',
-      image: <PremiumATM />,
+      image: <Image src="/images/modele-premium-gab.png" alt="Modèle Premium GAB Mobile Money" width={400} height={300} className="w-full h-full object-contain" />,
       recommended: true,
     },
     {
       name: 'Modèle Mural',
       description: 'Compact, discret, haute disponibilité',
       badge: 'Déploiement rapide',
-      badgeColor: 'bg-[#1A237E]',
-      image: <MuralATM />,
+      badgeColor: 'bg-[#0D1117]',
+      image: <Image src="/images/modele-mural-gab.png" alt="Modèle Mural GAB Mobile Money" width={400} height={300} className="w-full h-full object-contain" />,
       recommended: false,
     },
   ];
@@ -165,14 +165,14 @@ export default function SolutionsSection() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 md:py-20">
+    <section className="w-full bg-white pt-10 md:pt-12 pb-16 md:pb-20">
       <div className="max-w-[1280px] mx-auto px-4 md:px-10 lg:px-20">
         {/* En-tête : Expertise & Statistiques */}
         <div className="text-center mb-12 md:mb-16">
           <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
             NOS SOLUTIONS
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A237E] mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
             7 ans d&apos;expertise au service des GAB Mobile Money en Afrique
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto mb-12 leading-relaxed">
@@ -203,7 +203,7 @@ export default function SolutionsSection() {
               <p className="text-[#F9A825] text-base md:text-lg font-semibold mb-2">
                 La solution hardware
               </p>
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A237E] mb-2">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
                 Des GAB conçus pour l&apos;Afrique, certifiés aux standards mondiaux
               </h3>
               <p className="text-gray-600 text-sm md:text-base">
@@ -237,7 +237,7 @@ export default function SolutionsSection() {
                 </div>
 
                 {/* Titre et description */}
-                <h4 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-2">
+                <h4 className="text-xl md:text-2xl font-bold text-[#0D1117] mb-2">
                   {model.name}
                 </h4>
                 <p className="text-gray-600 text-sm md:text-base mb-4">
@@ -263,7 +263,7 @@ export default function SolutionsSection() {
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
               NOS PARTENAIRES TECHNOLOGIQUES
             </p>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A237E]">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
               Les leaders mondiaux du hardware bancaire
             </h3>
           </div>
@@ -273,14 +273,14 @@ export default function SolutionsSection() {
             {techPartners.map((partner, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center h-16 w-full"
+                className="flex items-center justify-center h-16 w-full bg-white rounded-lg p-3 border border-gray-200"
               >
                 <Image
                   src={partner.logo}
                   alt={partner.name}
                   width={120}
                   height={60}
-                  className="h-auto w-auto max-h-[60px] object-contain"
+                  className="h-auto w-auto max-h-[60px] object-contain brightness-0 opacity-50"
                 />
               </div>
             ))}

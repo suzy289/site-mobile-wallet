@@ -133,26 +133,44 @@ export default function AboutPartnershipSection() {
   return (
     <section className="w-full bg-white py-16 md:py-20">
       <div className="max-w-[1600px] mx-auto px-4 md:px-10 lg:px-20">
-        <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
-          {/* ========== BLOC DE GAUCHE : À PROPOS ========== */}
-          <div className="flex-1">
-            {/* En-tête */}
-            <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-              À PROPOS
-            </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A237E] mb-6">
-              Qui sommes-nous ?
-            </h2>
-            
-            {/* Description */}
-            <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-              Nous sommes une entreprise technologique basée aux États-Unis et au Cameroun, alliant l&apos;innovation de la Silicon Valley aux réalités du marché africain.
-            </p>
+        <div className="flex flex-col gap-8 md:gap-12">
+          {/* ========== BLOC À PROPOS : 2 colonnes (texte + visions à gauche, logo + carte à droite) ========== */}
+          <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Colonne gauche : en-tête, description, cartes Vision */}
+            <div>
+              <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
+                À PROPOS
+              </p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
+                Qui sommes-nous ?
+              </h2>
+              <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
+                Nous sommes une entreprise technologique basée aux États-Unis et au Cameroun, à la croisée de l&apos;innovation Silicon Valley et des réalités du marché africain.
+              </p>
+              {/* Cartes de Vision */}
+              <div className="space-y-4">
+                {visions.map((vision, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-md p-5 md:p-6 border-l-4 border-[#F9A825] hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="text-[#F9A825] font-bold text-lg md:text-xl flex-shrink-0">
+                        VISION {vision.number}
+                      </div>
+                      <p className="text-gray-800 font-bold text-sm md:text-base leading-relaxed flex-1">
+                        {vision.title}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            {/* Logo et badges de localisation */}
-            <div className="mb-8">
+            {/* Colonne droite : logo, badges pays, carte du monde */}
+            <div className="space-y-6">
               {/* Carte logo */}
-              <div className="bg-white rounded-lg shadow-md p-6 mb-4 border border-gray-200">
+              <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
                 <div className="flex items-center justify-center">
                   <Image
                     src="/images/logo_mw.png"
@@ -163,43 +181,22 @@ export default function AboutPartnershipSection() {
                   />
                 </div>
               </div>
-
               {/* Badges de localisation */}
-              <div className="flex gap-3">
-                <div className="bg-[#1A237E] text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+              <div className="flex gap-3 flex-wrap">
+                <div className="bg-[#1A237E] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
                   <span>🇺🇸</span>
                   <span>États-Unis</span>
                 </div>
-                <div className="bg-[#F9A825] text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+                <div className="bg-[#F9A825] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
                   <span>🇨🇲</span>
                   <span>Cameroun</span>
                 </div>
               </div>
-            </div>
-
-            {/* Cartes de Vision */}
-            <div className="space-y-4 mb-8">
-              {visions.map((vision, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-md p-5 md:p-6 border-l-4 border-[#F9A825] hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="text-[#F9A825] font-bold text-lg md:text-xl">
-                      VISION {vision.number}
-                    </div>
-                    <p className="text-gray-800 text-sm md:text-base leading-relaxed flex-1">
-                      {vision.title}
-                    </p>
-                  </div>
+              {/* Carte du monde */}
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <div className="h-48 md:h-64">
+                  <WorldMap />
                 </div>
-              ))}
-            </div>
-
-            {/* Carte du monde */}
-            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-              <div className="h-48 md:h-64">
-                <WorldMap />
               </div>
             </div>
           </div>
