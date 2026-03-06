@@ -6,59 +6,43 @@ import Image from 'next/image';
 export default function RoadmapTestimonialsSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  // Données de la roadmap
+  // Données de la roadmap (design aligné sur la maquette)
   const roadmapPhases = [
     {
       period: '2020-2024',
       title: 'R&D & Pilote',
       status: 'completed',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      icon: 'check',
       items: ['Conception', 'Pilote MTN', 'Autorisations'],
       badge: 'Complété',
-      badgeColor: 'bg-green-500',
+      badgeIcon: 'check',
     },
     {
       period: '2020-2026',
-      title: 'En cours',
+      title: '(IN PROGRESS - featured)',
       status: 'in-progress',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
+      icon: 'lightning',
       items: ['Réseau franchisés', 'Multi-opérateurs', 'Cert. ANTIC'],
       badge: 'En cours',
-      badgeColor: 'bg-[#F9A825]',
+      badgeIcon: 'arrow',
     },
     {
       period: '2025-2026',
       title: 'Lancement Cameroun',
       status: 'in-progress',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
+      icon: 'lightning',
       items: ['Réseau franchisés', 'Multi-opérateurs', 'Cert. ANTIC'],
       badge: 'En cours',
-      badgeColor: 'bg-[#F9A825]',
+      badgeIcon: 'arrow',
     },
     {
       period: '2027+',
       title: 'Expansion Afrique',
       status: 'upcoming',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      ),
+      icon: 'arrow',
       items: ['Côte d\'Ivoire', 'RDC, Ghana', 'Sénégal'],
       badge: 'À venir',
-      badgeColor: 'bg-gray-500',
+      badgeIcon: 'arrow',
     },
   ];
 
@@ -91,30 +75,38 @@ export default function RoadmapTestimonialsSection() {
     },
   ];
 
-  // Composant SVG pour la carte de l'Afrique stylisée
+  // Carte de l'Afrique : contour discret + points lumineux + lignes en pointillés
   const AfricaMap = () => (
     <svg
-      viewBox="0 0 800 600"
-      className="w-full h-full opacity-10"
+      viewBox="0 0 500 400"
+      className="w-full h-full min-h-[400px]"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Forme simplifiée de l'Afrique */}
+      <defs>
+        <filter id="glow-orange">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      {/* Contour Afrique (gris semi-transparent) */}
       <path
-        d="M 200 100 Q 300 80 400 100 T 600 120 Q 700 140 750 130 L 750 200 Q 700 220 600 210 T 400 200 Q 300 210 200 200 T 100 180 Q 120 150 150 130 Z"
-        fill="#F9A825"
-        stroke="#F57C00"
-        strokeWidth="2"
+        d="M 80 80 Q 120 60 180 70 L 220 90 L 260 85 L 300 100 L 340 120 L 380 110 L 420 130 L 450 150 L 460 200 L 440 260 L 400 300 L 350 320 L 300 310 L 250 330 L 200 300 L 160 260 L 140 200 L 100 150 Z"
+        fill="none"
+        stroke="rgba(255,255,255,0.06)"
+        strokeWidth="1.5"
       />
-      {/* Points de connexion lumineux */}
-      <circle cx="300" cy="150" r="8" fill="#F9A825" opacity="0.8">
-        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="450" cy="180" r="8" fill="#F9A825" opacity="0.8">
-        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="0.5s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="550" cy="200" r="8" fill="#F9A825" opacity="0.8">
-        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="1s" repeatCount="indefinite" />
-      </circle>
+      {/* Points lumineux orange (expansion) */}
+      <circle cx="280" cy="180" r="5" fill="#F9A825" opacity="0.9" filter="url(#glow-orange)" />
+      <circle cx="340" cy="200" r="5" fill="#F9A825" opacity="0.9" filter="url(#glow-orange)" />
+      <circle cx="380" cy="240" r="5" fill="#F9A825" opacity="0.9" filter="url(#glow-orange)" />
+      <circle cx="400" cy="280" r="5" fill="#F9A825" opacity="0.9" filter="url(#glow-orange)" />
+      {/* Lignes en pointillés entre les points */}
+      <line x1="280" y1="180" x2="340" y2="200" stroke="rgba(249,168,37,0.5)" strokeWidth="1" strokeDasharray="4 4" />
+      <line x1="340" y1="200" x2="380" y2="240" stroke="rgba(249,168,37,0.5)" strokeWidth="1" strokeDasharray="4 4" />
+      <line x1="380" y1="240" x2="400" y2="280" stroke="rgba(249,168,37,0.5)" strokeWidth="1" strokeDasharray="4 4" />
     </svg>
   );
 
@@ -128,79 +120,150 @@ export default function RoadmapTestimonialsSection() {
 
   return (
     <>
-      {/* ========== BLOC 1 : ROADMAP ========== */}
+      {/* ========== BLOC 1 : ROADMAP (design maquette) ========== */}
       <section className="w-full bg-[#0A0E1A] py-16 md:py-20 relative overflow-hidden">
-        {/* Carte de l'Afrique en arrière-plan */}
-        <div className="absolute right-0 top-0 w-1/2 h-full opacity-20">
+        {/* Formes de fond : dégradés lumineux floutés */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px]" />
+          <div className="absolute top-1/3 right-0 w-72 h-72 bg-[#F9A825]/10 rounded-full blur-[80px]" />
+        </div>
+        {/* Carte Afrique à droite */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[45%] max-w-xl h-[70%] opacity-30 pointer-events-none">
           <AfricaMap />
         </div>
 
-        <div className="max-w-[1600px] mx-auto px-4 md:px-10 lg:px-20 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-10 lg:px-20 relative z-10">
           {/* En-tête */}
-          <div className="text-center mb-12 md:mb-16">
-            <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
+          <div className="text-center mb-14 md:mb-20">
+            <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-3">
               NOTRE ROADMAP
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Notre Roadmap
             </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
+            <p className="text-white text-base md:text-lg max-w-3xl mx-auto">
               De la R&D au déploiement continental - une vision structurée sur 7 ans
             </p>
           </div>
 
-          {/* Timeline horizontale */}
-          <div className="relative py-8 md:py-12">
-            {/* Ligne de timeline (absolue derrière les cartes) */}
-            <div className="absolute top-1/2 left-0 right-0 h-1.5 bg-gray-700 transform -translate-y-1/2 hidden md:block z-0">
-              <div className="h-full bg-[#F9A825] w-3/4 transition-all duration-1000"></div>
+          {/* Timeline : ligne avec dégradé gris → orange lumineux */}
+          <div className="relative">
+            {/* Ligne horizontale (dégradé + lueur orange à droite) */}
+            <div className="absolute left-0 right-0 top-[5.5rem] md:top-[6rem] h-1.5 -translate-y-1/2 z-0 hidden md:block">
+              <div
+                className="h-full w-full rounded-full"
+                style={{
+                  background: 'linear-gradient(90deg, #475569 0%, #64748b 30%, #F9A825 70%, #F9A825 100%)',
+                  boxShadow: '0 0 24px rgba(249,168,37,0.5), 0 0 48px rgba(249,168,37,0.25)',
+                }}
+              />
             </div>
 
-            {/* Cartes de phases */}
-            <div className="flex flex-col md:flex-row gap-6 md:gap-4 relative z-10">
+            {/* Grille des 4 phases */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
               {roadmapPhases.map((phase, index) => (
-                <div
-                  key={index}
-                  className={`flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-5 md:p-6 border-2 ${
-                    phase.status === 'completed'
-                      ? 'border-green-500'
-                      : phase.status === 'in-progress'
-                      ? 'border-[#F9A825]'
-                      : 'border-gray-500 border-dashed'
-                  } relative`}
-                >
-                  {/* Icône */}
-                  <div
-                    className={`mb-4 ${
-                      phase.status === 'completed'
-                        ? 'text-green-500'
-                        : phase.status === 'in-progress'
-                        ? 'text-[#F9A825]'
-                        : 'text-gray-400'
-                    }`}
-                  >
-                    {phase.icon}
+                <div key={index} className="flex flex-col items-center">
+                  {/* Titre au-dessus de la ligne */}
+                  <div className="text-center mb-6">
+                    <p className="text-white font-bold text-base md:text-lg">{phase.period}</p>
+                    <p
+                      className={
+                        phase.status === 'in-progress' && phase.title.startsWith('(')
+                          ? 'text-white text-xs md:text-sm mt-0.5'
+                          : 'text-[#F9A825] text-sm md:text-base font-medium mt-0.5'
+                      }
+                    >
+                      {phase.title}
+                    </p>
                   </div>
 
-                  {/* Période */}
-                  <p className="text-white font-bold text-lg md:text-xl mb-2">{phase.period}</p>
+                  {/* Cercle sur la timeline (icône + bordure orange + lueur si in-progress/upcoming) */}
+                  <div
+                    className={`relative z-20 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full border-2 shrink-0 mb-6 ${
+                      phase.status === 'upcoming' ? 'border-black bg-black' : phase.status === 'completed' ? 'border-white' : 'border-[#F9A825]'
+                    } ${
+                      phase.status === 'in-progress' ? 'bg-[#F9A825]' : phase.status === 'upcoming' ? 'bg-black' : 'bg-white'
+                    }`}
+                    style={
+                      phase.status !== 'completed'
+                        ? { boxShadow: '0 0 20px rgba(249,168,37,0.6), 0 0 40px rgba(249,168,37,0.3)' }
+                        : { boxShadow: '0 0 12px rgba(249,168,37,0.4)' }
+                    }
+                  >
+                    {phase.icon === 'check' && (
+                      <svg className="w-7 h-7 md:w-8 md:h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                    {phase.icon === 'lightning' && (
+                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )}
+                    {phase.icon === 'arrow' && (
+                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
+                  </div>
 
-                  {/* Titre */}
-                  <h3 className="text-white font-semibold text-base md:text-lg mb-4">{phase.title}</h3>
+                  {/* Carte contenu sous la timeline */}
+                  <div
+                    className={`w-full rounded-xl p-5 md:p-6 min-h-[200px] flex flex-col ${
+                      phase.status === 'completed'
+                        ? 'bg-white border border-gray-200'
+                        : phase.status === 'in-progress'
+                        ? 'bg-[#c77a0a] border border-[#F9A825]/50'
+                        : 'bg-black border border-dashed border-[#F9A825]'
+                    }`}
+                    style={
+                      phase.status === 'in-progress'
+                        ? { boxShadow: '0 0 24px rgba(249,168,37,0.35), 0 0 48px rgba(249,168,37,0.15)' }
+                        : undefined
+                    }
+                  >
+                    <ul className="space-y-2 mb-4 flex-1">
+                      {phase.items.map((item, i) => (
+                        <li
+                          key={i}
+                          className={`flex items-center gap-2 text-sm md:text-base ${
+                            phase.status === 'in-progress' || phase.status === 'upcoming' ? 'text-white' : phase.status === 'completed' ? 'text-black' : 'text-gray-600'
+                          }`}
+                        >
+                          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${phase.status === 'completed' ? 'bg-[#F9A825]' : phase.status === 'in-progress' ? 'bg-white' : 'bg-[#F9A825]'}`} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  {/* Points clés */}
-                  <ul className="space-y-2 mb-4">
-                    {phase.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-gray-300 text-sm md:text-base flex items-start gap-2">
-                        <span className="text-[#F9A825] mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Badge de statut */}
-                  <div className={`${phase.badgeColor} text-white px-3 py-1.5 rounded-full text-xs font-bold inline-block`}>
-                    {phase.badge}
+                    {/* Bouton statut */}
+                    {phase.status === 'completed' && (
+                      <div className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-3 py-2 rounded-lg text-sm font-semibold mt-auto w-max self-center">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {phase.badge}
+                      </div>
+                    )}
+                    {phase.status === 'in-progress' && (
+                      <div
+                        className="inline-flex items-center justify-center gap-2 bg-white text-[#F9A825] px-3 py-2 rounded-lg text-sm font-semibold mt-auto w-max self-center"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        {phase.badge}
+                      </div>
+                    )}
+                    {phase.status === 'upcoming' && (
+                      <div className="inline-flex items-center justify-center gap-2 bg-gray-700 text-white border border-gray-500 px-3 py-2 rounded-lg text-sm font-medium mt-auto w-max self-center">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        {phase.badge}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -225,77 +288,65 @@ export default function RoadmapTestimonialsSection() {
             </p>
           </div>
 
-          {/* Grille de témoignages (3 colonnes) */}
+          {/* Grille de témoignages (3 colonnes) - design identique à la maquette */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg p-6 md:p-8 relative hover:translate-y-2 transition-transform duration-300"
+                className="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] p-6 md:p-8 relative overflow-hidden border-l-4 border-[#F9A825]"
               >
-                {/* Guillemets orange en haut à gauche */}
-                <div className="absolute top-4 left-4 text-[#F9A825] text-4xl font-bold opacity-20">
+                {/* Guillemets orange en haut à gauche - grands et visibles */}
+                <div className="text-[#F9A825] text-6xl md:text-7xl font-bold leading-none select-none" aria-hidden>
                   &quot;
                 </div>
 
-                {/* Contenu */}
-                <div className="relative z-10">
-                  {/* Citation */}
-                  <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
-                    {testimonial.quote}
-                  </p>
+                {/* Citation en italique, alignée à gauche */}
+                <p className="text-gray-900 text-sm md:text-base leading-relaxed mb-6 mt-2 italic font-medium">
+                  {testimonial.quote}
+                </p>
 
-                  {/* Note de 5 étoiles */}
-                  <div className="flex gap-1 mb-6">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <svg
-                        key={i}
-                        className="w-5 h-5 text-[#F9A825]"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
+                {/* Ligne horizontale de séparation */}
+                <div className="h-px bg-gray-200 mb-6" aria-hidden />
 
-                  {/* Profil du signataire */}
-                  <div className="flex items-center gap-4">
-                    {testimonial.isFranchise ? (
-                      <>
-                        {/* Photo de profil circulaire */}
-                        <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#F9A825] relative">
-                          <Image
-                            src={testimonial.logo}
-                            alt={testimonial.author}
-                            width={48}
-                            height={48}
-                            className="w-full h-full object-cover"
-                            unoptimized
-                          />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-[#1A237E] text-sm md:text-base">
-                            {testimonial.author}
-                          </p>
-                          <p className="text-gray-600 text-xs md:text-sm">{testimonial.company}</p>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        {/* Logo du partenaire */}
-                        <div
-                          className={`${testimonial.logoColor} w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-sm`}
+                {/* Bloc auteur : logo à gauche, infos + étoiles à droite */}
+                <div className="flex items-start gap-4">
+                  {/* Logo circulaire fond orange */}
+                  {testimonial.isFranchise ? (
+                    <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#F9A825] shrink-0">
+                      <Image
+                        src={testimonial.logo}
+                        alt={testimonial.author}
+                        width={48}
+                        height={48}
+                        className="w-full h-full object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-[#F9A825] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                      {testimonial.logoText}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-bold text-gray-900 text-sm md:text-base">
+                      {testimonial.author}
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm mt-0.5">
+                      {testimonial.company}
+                    </p>
+                    {/* 5 étoiles orange sous le nom de l'entreprise */}
+                    <div className="flex gap-0.5 mt-2">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg
+                          key={i}
+                          className="w-5 h-5 text-[#F9A825]"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
                         >
-                          {testimonial.logoText}
-                        </div>
-                        <div>
-                          <p className="font-semibold text-[#1A237E] text-sm md:text-base">
-                            {testimonial.author}
-                          </p>
-                          <p className="text-gray-600 text-xs md:text-sm">{testimonial.company}</p>
-                        </div>
-                      </>
-                    )}
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

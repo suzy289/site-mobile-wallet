@@ -43,148 +43,148 @@ export default function ROISection() {
     },
   ];
 
-  // Avantages clés
+  // Avantages clés (sans icônes)
   const advantages = [
-    {
-      title: 'ROI Rapide',
-      description: '1 à 1,6 an en multi-opérateurs, supérieur aux franchisés traditionnelles',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Modèle Scalable',
-      description: 'Franchise clé en main, expansion rapide, support complet',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Marché Structurel',
-      description: 'Croissance +25%/an du Mobile Money, besoin essentiel en Afrique',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Standards Bancaires',
-      description: 'Sécurité, fiabilité et qualité équivalentes au secteur bancaire',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-    },
+    { title: 'ROI Rapide', description: '1 à 1,6 an en multi-opérateurs, supérieur aux franchisés traditionnelles' },
+    { title: 'Modèle Scalable', description: 'Franchise clé en main, expansion rapide, support complet' },
+    { title: 'Marché Structurel', description: 'Croissance +25%/an du Mobile Money, besoin essentiel en Afrique' },
+    { title: 'Standards Bancaires', description: 'Sécurité, fiabilité et qualité équivalentes au secteur bancaire' },
   ];
 
   // Composant pour une carte ROI
-  const ROICard = ({ data, isMulti = false }: { data: any; isMulti?: boolean }) => (
-    <div
-      className={`rounded-lg p-6 md:p-8 relative ${
-        isMulti
-          ? 'bg-gradient-to-br from-[#F9A825] to-[#F57C00] shadow-[0_0_40px_rgba(249,168,37,0.6)]'
-          : 'bg-gray-700'
-      }`}
-    >
-      {/* Badge recommandé/meilleur ROI */}
-      {data.badge && (
-        <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1.5 flex items-center gap-2">
-          {data.badge === 'RECOMMANDÉ' ? (
-            <svg className="w-4 h-4 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          ) : (
-            <svg className="w-4 h-4 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-          )}
-          <span className="text-[#F9A825] font-bold text-xs">{data.badge}</span>
-        </div>
-      )}
+  const ROICard = ({ data, isMulti = false }: { data: any; isMulti?: boolean }) => {
+    const roiParts = (data.roi || '').split(' ');
+    const roiValue = roiParts[0] || '';
+    const roiUnit = roiParts.slice(1).join(' ') || 'Années';
+    const revenueStr = data.revenue || '';
+    const revenueMatch = revenueStr.match(/^(.+?)\s+(XAF)$/);
+    const revenueValue = revenueMatch ? revenueMatch[1] : revenueStr;
+    const revenueCurrency = revenueMatch ? revenueMatch[2] : '';
+    const revenueLabel = data.title.includes('Pack') ? 'Revenu annuel projeté' : 'Revenu annuel estimé';
 
-      {/* Titre avec icônes */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex items-center gap-1">
-          {Array.from({ length: data.iconCount || 1 }).map((_, i) => (
-            <span key={i} className="text-2xl md:text-3xl">
-              {data.icon}
-            </span>
-          ))}
-        </div>
-        <h3 className={`text-lg md:text-xl font-bold ${isMulti ? 'text-white' : 'text-gray-200'}`}>
-          {data.title}
-        </h3>
-      </div>
-
-      {/* ROI */}
-      <div className="mb-4">
-        <p className={`text-sm md:text-base mb-2 ${isMulti ? 'text-white/90' : 'text-gray-300'}`}>
-          Retour sur investissement (ROI)
-        </p>
-        <p className={`text-3xl md:text-4xl font-bold mb-3 ${isMulti ? 'text-white' : 'text-white'}`}>
-          {data.roi}
-        </p>
-        
-        {/* Barre de progression personnalisée (6px) */}
-        <div className="w-full bg-white/20 rounded-full mb-2" style={{ height: '6px' }}>
-          <div
-            className={`h-full rounded-full ${
-              isMulti ? 'bg-white' : 'bg-[#F9A825]'
-            } transition-all duration-1000`}
-            style={{ width: `${data.roiProgress}%` }}
-          ></div>
-        </div>
-
-        {/* Badge "3X plus rapide" */}
-        {data.speedBadge && (
-          <div className="inline-flex items-center gap-1 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold mt-2">
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            {data.speedBadge}
+    return (
+      <div
+        className={`rounded-xl p-6 md:p-8 relative md:h-full md:flex md:flex-col ${
+          isMulti
+            ? 'bg-gradient-to-br from-[#F9A825] to-[#F57C00] shadow-[0_0_40px_rgba(249,168,37,0.6)]'
+            : 'bg-[#1e293b]'
+        }`}
+      >
+        {/* Badge RECOMMANDÉ / MEILLEUR ROI (cartes multi) */}
+        {data.badge && (
+          <div className="absolute top-4 right-4 bg-white text-black rounded-full px-4 py-2 flex items-center gap-2 shadow-md z-10">
+            {data.badge === 'RECOMMANDÉ' ? (
+              <svg className="w-4 h-4 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            )}
+            <span className="font-bold text-xs text-black">{data.badge}</span>
           </div>
         )}
-      </div>
 
-      {/* Revenu annuel */}
-      <div>
-        <p className={`text-sm md:text-base mb-2 ${isMulti ? 'text-white/90' : 'text-gray-300'}`}>
-          {data.title.includes('Pack') ? 'Revenu annuel projeté' : 'Revenu annuel estimé'}
-        </p>
-        <div className="flex items-center gap-2">
-          <span className="text-2xl md:text-3xl">⭐</span>
-          <p className={`text-2xl md:text-3xl font-bold ${isMulti ? 'text-white' : 'text-white'}`}>
-            {data.revenue}
-          </p>
+        {/* En-tête : icône (orange sur cartes grises, noir sur cartes orange) + titre, puis trait horizontal */}
+        <div className={`flex items-center gap-3 pb-4 border-b ${isMulti ? 'border-white/30' : 'border-gray-500/50'}`}>
+          <span className={`flex items-center gap-0.5 shrink-0 ${isMulti ? 'text-black' : 'text-[#F9A825]'}`} aria-hidden>
+            {data.type === 'mono' ? (
+              Array.from({ length: data.iconCount || 1 }).map((_, i) => (
+                <svg key={i} className="w-7 h-7 md:w-8 md:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M6 8h2M6 12h12M6 16h4" />
+                  <circle cx="17" cy="14" r="1.5" />
+                </svg>
+              ))
+            ) : (
+              <svg className="w-8 h-8 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            )}
+          </span>
+          <h3 className={`text-lg md:text-xl font-bold ${isMulti ? 'text-white' : 'text-gray-100'}`}>
+            {data.title}
+          </h3>
+        </div>
+
+        {/* Contenu principal : 2 colonnes séparées par un trait vertical */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 pt-4 md:pt-5`}>
+          {/* Colonne gauche : Retour sur investissement (ROI) */}
+          <div className={`pr-0 md:pr-6 md:border-r pb-4 md:pb-0 md:border-b-0 border-b ${isMulti ? 'border-white/30' : 'border-gray-500/50'} mb-0`}>
+            <p className={`text-sm mb-2 ${isMulti ? 'text-white/90' : 'text-gray-400'}`}>
+              Retour sur investissement (ROI)
+            </p>
+            <div className="flex items-baseline gap-2 flex-wrap mb-2">
+              <span className={`text-3xl md:text-4xl font-bold ${isMulti ? 'text-white' : 'text-white'}`}>
+                {roiValue}
+              </span>
+              <span className={`text-base md:text-lg ${isMulti ? 'text-white/80' : 'text-gray-400'}`}>
+                {roiUnit}
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex-1 min-w-0 bg-white/20 rounded-full overflow-hidden" style={{ height: '8px' }}>
+                <div
+                  className={`h-full rounded-full ${
+                    isMulti ? 'bg-white' : 'bg-gray-300'
+                  } transition-all duration-1000`}
+                  style={{ width: `${data.roiProgress}%` }}
+                />
+              </div>
+              <span className={`text-sm font-semibold tabular-nums shrink-0 ${isMulti ? 'text-white/90' : 'text-gray-400'}`}>
+                {data.roiProgress}%
+              </span>
+            </div>
+            {data.speedBadge && (
+              <div className="inline-flex items-center gap-1 bg-green-800 text-white px-4 py-2 rounded-full border-2 border-green-400 shadow-[0_0_16px_rgba(74,222,128,0.4)] text-xs font-semibold mt-2">
+                <span>⚡</span>
+                {data.speedBadge}
+              </div>
+            )}
+          </div>
+
+          {/* Colonne droite : Revenu annuel */}
+          <div className="md:pl-6">
+            <p className={`text-sm mb-2 ${isMulti ? 'text-white/90' : 'text-gray-400'}`}>
+              {revenueLabel}
+            </p>
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <span className="text-2xl md:text-3xl" aria-hidden>⭐</span>
+              <span className={`text-2xl md:text-3xl font-bold ${isMulti ? 'text-white' : 'text-white'}`}>
+                {revenueValue}
+              </span>
+              {revenueCurrency && (
+                <span className={`text-base md:text-lg ${isMulti ? 'text-white/80' : 'text-gray-400'}`}>
+                  {revenueCurrency}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
-    <section className="w-full bg-[#0A0E1A] py-16 md:py-20 relative overflow-hidden">
-      {/* Motif de circuit imprimé en arrière-plan (très subtil) */}
-      <div className="absolute inset-0 opacity-5">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="circuit" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M0 20h40M20 0v40" stroke="#3B82F6" strokeWidth="0.5" />
-              <circle cx="20" cy="20" r="1" fill="#3B82F6" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#circuit)" />
-        </svg>
-      </div>
+    <section className="w-full">
+      {/* Bloc à fond bleu : limité à l&apos;en-tête, grille ROI et note de réassurance */}
+      <div className="w-full bg-[#0A0E1A] py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="circuit" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M0 20h40M20 0v40" stroke="#3B82F6" strokeWidth="0.5" />
+                <circle cx="20" cy="20" r="1" fill="#3B82F6" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuit)" />
+          </svg>
+        </div>
 
-      <div className="max-w-[1600px] mx-auto px-4 md:px-10 lg:px-20 relative z-10">
-        {/* En-tête */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-10 lg:px-20 relative z-10">
+          {/* En-tête */}
+          <div className="text-center mb-12 md:mb-16">
           <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
             QUELQUES CHIFFRES
           </p>
@@ -196,62 +196,54 @@ export default function ROISection() {
           </p>
         </div>
 
-        {/* Grille de comparaison ROI */}
+        {/* Grille de comparaison ROI : titres + 2x2 cartes, VS au centre */}
         <div className="relative mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {/* Colonne gauche : Mono-opérateur */}
-            <div className="space-y-6">
-              <div className="text-center mb-4">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-300">Mono-opérateur</h3>
-              </div>
-              <ROICard data={roiComparison[0]} isMulti={false} />
-              <ROICard data={roiComparison[2]} isMulti={false} />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 md:items-stretch">
+            {/* Ligne des titres : Mono-opérateur | Multi-opérateurs */}
+            <h3 className="text-gray-400 font-semibold text-lg md:text-xl md:self-start text-center">Mono-opérateur</h3>
+            <h3 className="text-white font-semibold text-lg md:text-xl md:self-start text-center">Multi-opérateurs</h3>
+            {/* Ligne 1 : 1 GAB/1 Opérateur | 1 GAB Multi */}
+            <ROICard data={roiComparison[0]} isMulti={false} />
+            <ROICard data={roiComparison[1]} isMulti={true} />
+            {/* Ligne 2 : Pack 3 GAB (01 opérateur) | Pack 3 GAB Multi */}
+            <ROICard data={roiComparison[2]} isMulti={false} />
+            <ROICard data={roiComparison[3]} isMulti={true} />
+          </div>
 
-            {/* Colonne droite : Multi-opérateurs */}
-            <div className="space-y-6">
-              <div className="text-center mb-4">
-                <h3 className="text-xl md:text-2xl font-bold text-white">Multi-opérateurs</h3>
-              </div>
-              <ROICard data={roiComparison[1]} isMulti={true} />
-              <ROICard data={roiComparison[3]} isMulti={true} />
+          {/* Badge VS central (desktop) - entre les 4 cartes, bien centré */}
+          <div className="hidden md:flex items-center justify-center absolute inset-0 z-20 pointer-events-none">
+            <div className="bg-gray-800 border-2 border-[#F9A825] rounded-xl w-16 h-16 flex items-center justify-center shadow-[0_0_20px_rgba(249,168,37,0.5)]">
+              <span className="text-white font-bold text-xl">VS</span>
             </div>
           </div>
 
-          {/* Badge VS central (desktop) */}
-          <div className="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-            <div className="bg-black border-4 border-[#F9A825] rounded-full w-20 h-20 flex items-center justify-center shadow-2xl">
-              <span className="text-[#F9A825] font-bold text-2xl md:text-3xl">VS</span>
-            </div>
-          </div>
-
-          {/* Badge VS pour mobile */}
+          {/* Badge VS pour mobile - centré entre les 4 cartes */}
           <div className="md:hidden flex items-center justify-center my-8">
-            <div className="bg-black border-4 border-[#F9A825] rounded-full w-16 h-16 flex items-center justify-center shadow-2xl">
-              <span className="text-[#F9A825] font-bold text-xl">VS</span>
+            <div className="bg-gray-800 border-2 border-[#F9A825] rounded-xl w-14 h-14 flex items-center justify-center shadow-[0_0_20px_rgba(249,168,37,0.5)]">
+              <span className="text-white font-bold text-lg">VS</span>
             </div>
           </div>
         </div>
 
         {/* Note de réassurance */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 text-black text-sm md:text-base font-bold">
-            <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex items-center gap-2 bg-green-800/70 text-white px-4 py-2 rounded-full border-2 border-green-400 shadow-[0_0_16px_rgba(74,222,128,0.4)] text-sm md:text-base font-bold">
+            <svg className="w-5 h-5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>Basé sur les données réelles au CMR</span>
           </div>
         </div>
+        </div>
+      </div>
 
-        {/* Barre de Réassurance Blanche */}
-        <div className="bg-white rounded-lg shadow-2xl p-8 md:p-12 mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {/* Barre de Réassurance Blanche : hors du fond bleu */}
+      <div className="max-w-[1600px] mx-auto px-4 md:px-10 lg:px-20 -mt-6 relative z-10">
+        <div className="bg-white rounded-lg shadow-2xl p-8 md:p-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200">
             {advantages.map((advantage, index) => (
-              <div key={index} className="text-center md:text-left">
-                <div className="text-[#F9A825] mb-3 flex justify-center md:justify-start">
-                  {advantage.icon}
-                </div>
-                <h4 className="text-[#F9A825] font-bold text-lg md:text-xl mb-2">
+              <div key={index} className="text-center py-6 md:py-0 md:px-6 first:pt-0 md:first:pl-0 last:pb-0 md:last:pr-0">
+                <h4 className={`font-bold text-lg md:text-xl mb-2 ${advantage.title === 'ROI Rapide' || advantage.title === 'Marché Structurel' ? 'text-black' : 'text-[#F9A825]'}`}>
                   {advantage.title}
                 </h4>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed">
