@@ -87,15 +87,14 @@ export default function PresentationFormModal() {
           <span className="font-medium">Retour</span>
         </button>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Image src="/images/logo_mw.png" alt="MobileWallet" width={40} height={40} className="h-10 w-10 object-contain" />
-          <span className="text-gray-900 font-bold text-xl">MobileWallet</span>
+        <div className="flex justify-center mb-6">
+          <Image src="/images/logo_mw.png" alt="MobileWallet" width={120} height={120} className="h-24 w-24 md:h-28 md:w-28 object-contain" style={{ width: 'auto', height: 'auto' }} />
         </div>
 
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
           Accédez à notre présentation
         </h2>
-        <p className="text-gray-600 text-sm mb-6">
+        <p className="text-gray-600 text-sm mb-6 text-center">
           Renseignez vos coordonnées pour recevoir le document par email.
         </p>
 
