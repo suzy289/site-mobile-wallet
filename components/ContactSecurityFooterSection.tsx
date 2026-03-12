@@ -489,7 +489,9 @@ export default function ContactSecurityFooterSection() {
               {/* Réseaux sociaux : Facebook et LinkedIn */}
               <div className="flex gap-3">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/MobileWalletPLC/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#F9A825] transition-colors"
                   aria-label="Facebook"
                 >
@@ -498,7 +500,9 @@ export default function ContactSecurityFooterSection() {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/mobile-wallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#F9A825] transition-colors"
                   aria-label="LinkedIn"
                 >
