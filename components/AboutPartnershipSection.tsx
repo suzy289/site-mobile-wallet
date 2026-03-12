@@ -9,12 +9,12 @@ export default function AboutPartnershipSection() {
   // Données mission et vision
   const missionsAndVisions = [
     {
-      label: 'MISSION',
-      title: 'Devenir leader de l\'infrastructure cashin – cashout en Afrique',
-    },
-    {
       label: 'VISION',
       title: 'Rendre le business du mobile money accessible à tous, tout en apportant des innovations pour mieux le déployer.',
+    },
+    {
+      label: 'MISSION',
+      title: 'Devenir leader de l\'infrastructure cashin – cashout en Afrique',
     },
   ];
 
@@ -129,6 +129,7 @@ export default function AboutPartnershipSection() {
                     src="/images/Gemini_Generated_Image_iy0av8iy0av8iy0a-removebg-preview.png"
                     alt="Carte du monde - Présence MobileWallet États-Unis et Afrique"
                     fill
+                    sizes="(max-width: 768px) 100vw, 256px"
                     className="object-contain"
                   />
                 </div>

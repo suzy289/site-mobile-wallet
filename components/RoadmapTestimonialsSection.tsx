@@ -65,7 +65,7 @@ export default function RoadmapTestimonialsSection() {
     {
       quote: 'En tant que super agent, la gestion d\'un réseau humain a toujours impliqué des failles de sécurité trop importantes. La solution Mobile Wallet me permet d\'éradiquer les risques de vol et de sécuriser entièrement mes flux. Je peux enfin me concentrer sur l\'essentiel : l\'expansion de mon activité et l\'ouverture d\'un maximum de points de service, une croissance qui était jusqu\'ici trop complexe et risquée à gérer.',
       author: 'Franchisé indépendant',
-      company: 'Réseau MobileWallet - Douala',
+      company: 'Réseau MobileWallet - Yaoundé',
       logo: '/images/logo_mw.png',
       useLogoImage: true,
     },

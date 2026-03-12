@@ -288,7 +288,8 @@ export default function SolutionsSection() {
                   alt={partner.name}
                   width={120}
                   height={60}
-                  className="h-auto w-auto max-h-[60px] object-contain brightness-0 opacity-50"
+                  className="max-h-[60px] object-contain brightness-0 opacity-50"
+                  style={{ width: 'auto', height: 'auto' }}
                 />
               </div>
             ))}

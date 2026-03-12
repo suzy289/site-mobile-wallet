@@ -35,7 +35,8 @@ export default function Partners() {
                     alt={partner.name}
                     width={isSmallLogo ? 120 : 200}
                     height={isSmallLogo ? 60 : 100}
-                    className={`h-auto w-auto object-contain ${isSmallLogo ? 'max-h-[60px]' : 'max-h-[100px]'}`}
+                    className={`object-contain ${isSmallLogo ? 'max-h-[60px]' : 'max-h-[100px]'}`}
+                    style={{ width: 'auto', height: 'auto' }}
                   />
                 ) : (
                   <div className={`${partner.bgColor} ${partner.textColor} px-4 py-2 rounded-lg font-bold text-sm max-h-[40px] flex items-center justify-center`}>
