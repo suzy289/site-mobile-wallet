@@ -3,56 +3,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutPartnershipSection() {
+  const { t } = useLanguage();
   const openPresentationModal = () => window.dispatchEvent(new CustomEvent('openPresentationModal'));
-  // Données mission et vision
   const missionsAndVisions = [
-    {
-      label: 'VISION',
-      title: 'Rendre le business du mobile money accessible à tous, tout en apportant des innovations pour mieux le déployer.',
-    },
-    {
-      label: 'MISSION',
-      title: 'Devenir leader de l\'infrastructure cashin – cashout en Afrique',
-    },
+    { label: t.about.vision, title: t.about.visionText },
+    { label: t.about.mission, title: t.about.missionText },
   ];
 
-  // Données des formules de partenariat
   const partnershipPlans = [
-    {
-      badge: 'FRANCHISE PLAN',
-      badgeColor: 'bg-[#0D1B2A] text-white',
-      title: 'Vous souhaitez démarrer',
-      description: 'Nous vous proposons une solution clé en main pour lancer votre activité Mobile Money sans infrastructure préalable.',
-      cta: 'Plus d\'informations →',
-      ctaColor: 'text-[#F9A825]',
-      target: 'Distributeurs, Entrepreneurs & Investisseurs',
-      targetColor: 'bg-[#0D1B2A] text-white',
-      highlighted: false,
-    },
-    {
-      badge: 'BRING YOUR ATM',
-      badgeColor: 'bg-[#F9A825] text-white',
-      title: 'Vous avez déjà des GAB ?',
-      description: 'Nous configurons notre système dans votre réseau existant pour le rendre compatible Mobile Money immédiatement.',
-      cta: 'Plus d\'informations →',
-      ctaColor: 'text-[#F9A825]',
-      target: 'Opérateur Existant ou Institutions',
-      targetColor: 'bg-[#F9A825] text-white',
-      highlighted: true,
-    },
-    {
-      badge: 'SAAS / WHITE LABEL',
-      badgeColor: 'bg-[#0D1B2A] text-white',
-      title: 'Lancez votre réseau',
-      description: 'Nous déployons toute votre infrastructure serveur et logicielle pour créer votre propre réseau de GAB Mobile Money.',
-      cta: 'Plus d\'informations →',
-      ctaColor: 'text-[#F9A825]',
-      target: 'Banques, Télécoms & Fintechs',
-      targetColor: 'bg-[#0D1B2A] text-white',
-      highlighted: false,
-    },
+    { badge: 'FRANCHISE PLAN', badgeColor: 'bg-[#0D1B2A] text-white', title: t.about.plan1Title, description: t.about.plan1Desc, cta: t.about.moreInfo, ctaColor: 'text-[#F9A825]', target: t.about.plan1Target, targetColor: 'bg-[#0D1B2A] text-white', highlighted: false },
+    { badge: 'BRING YOUR ATM', badgeColor: 'bg-[#F9A825] text-white', title: t.about.plan2Title, description: t.about.plan2Desc, cta: t.about.moreInfo, ctaColor: 'text-[#F9A825]', target: t.about.plan2Target, targetColor: 'bg-[#F9A825] text-white', highlighted: true },
+    { badge: 'SAAS / WHITE LABEL', badgeColor: 'bg-[#0D1B2A] text-white', title: t.about.plan3Title, description: t.about.plan3Desc, cta: t.about.moreInfo, ctaColor: 'text-[#F9A825]', target: t.about.plan3Target, targetColor: 'bg-[#0D1B2A] text-white', highlighted: false },
   ];
 
   return (
@@ -65,13 +29,13 @@ export default function AboutPartnershipSection() {
             {/* Colonne gauche : en-tête, description, cartes Vision */}
             <div className="bg-[#F9A825]/10 rounded-lg p-5 md:p-6">
               <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-                À PROPOS
+                {t.about.label}
               </p>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
-                Qui sommes-nous ?
+                {t.about.title}
               </h2>
               <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-                Nous sommes une entreprise technologique basée aux États-Unis et au Cameroun, à la croisée de l&apos;innovation Silicon Valley et des réalités du marché africain.
+                {t.about.description}
               </p>
               {/* Cartes Mission et Vision */}
               <div className="space-y-4">
@@ -115,11 +79,11 @@ export default function AboutPartnershipSection() {
               <div className="flex gap-3 flex-wrap">
                 <div className="bg-[#0A0E1A] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
                   <span>🇺🇸</span>
-                  <span>États-Unis</span>
+                  <span>{t.about.usa}</span>
                 </div>
                 <div className="bg-[#F9A825] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
                   <span>🇨🇲</span>
-                  <span>Cameroun</span>
+                  <span>{t.about.cameroon}</span>
                 </div>
               </div>
               {/* Carte du monde */}
@@ -127,7 +91,7 @@ export default function AboutPartnershipSection() {
                 <div className="h-48 md:h-64 relative w-full">
                   <Image
                     src="/images/Gemini_Generated_Image_iy0av8iy0av8iy0a-removebg-preview.png"
-                    alt="Carte du monde - Présence MobileWallet États-Unis et Afrique"
+                    alt={t.about.worldMapAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 256px"
                     className="object-contain"
@@ -143,13 +107,13 @@ export default function AboutPartnershipSection() {
           <div id="formules" className="flex-1 bg-gray-50 rounded-lg p-6 md:p-10 border border-gray-200 scroll-mt-20">
             {/* En-tête centré */}
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-3 text-center">
-              NOS FORMULES DE PARTENARIAT
+              {t.about.formulasLabel}
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 text-center">
-              Comment lancer votre projet ?
+              {t.about.formulasTitle}
             </h2>
             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed text-center max-w-2xl mx-auto">
-              Choisissez le modèle de partenariat adapté à votre situation et démarrez avec MobileWallet.
+              {t.about.formulasSubtitle}
             </p>
 
             {/* Grille de cartes de partenariat */}
@@ -207,14 +171,14 @@ export default function AboutPartnershipSection() {
                 href="#contact"
                 className="bg-[#F9A825] text-white px-8 md:px-12 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:bg-[#F57C00] transition-colors duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto text-center inline-block"
               >
-                Contactez l&apos;équipe
+                {t.about.contactTeam}
               </Link>
               <button
                 type="button"
                 onClick={openPresentationModal}
                 className="bg-[#0D1117] text-white px-8 md:px-12 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:opacity-90 transition-opacity duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
               >
-                Consultez le document de présentation
+                {t.about.consultDoc}
               </button>
             </div>
           </div>

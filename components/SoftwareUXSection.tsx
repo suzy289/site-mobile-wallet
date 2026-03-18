@@ -1,96 +1,64 @@
 'use client';
 
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const FeatureIcon1 = () => (
+  <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+  </svg>
+);
+const FeatureIcon2 = () => (
+  <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+  </svg>
+);
+const FeatureIcon3 = () => (
+  <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+  </svg>
+);
+const FeatureIcon4 = () => (
+  <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+  </svg>
+);
+const DashIcon1 = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+  </svg>
+);
+const DashIcon2 = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+);
+const DashIcon3 = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+  </svg>
+);
 
 export default function SoftwareUXSection() {
-  // Fonctionnalités du logiciel
+  const { t } = useLanguage();
   const softwareFeatures = [
-    {
-      icon: (
-        <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-        </svg>
-      ),
-      title: 'Intégration IPI universelle',
-    },
-    {
-      icon: (
-        <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-        </svg>
-      ),
-      title: 'Compatible tous opérateurs',
-    },
-    {
-      icon: (
-        <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-        </svg>
-      ),
-      title: 'UX ergonomique & rapide',
-    },
-    {
-      icon: (
-        <svg className="w-7 h-7 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-      title: 'Contrôle admin temps réel',
-    },
+    { icon: <FeatureIcon1 key="f1" />, title: t.software.features[0] },
+    { icon: <FeatureIcon2 key="f2" />, title: t.software.features[1] },
+    { icon: <FeatureIcon3 key="f3" />, title: t.software.features[2] },
+    { icon: <FeatureIcon4 key="f4" />, title: t.software.features[3] },
   ];
-
-  // Fonctionnalités du Dashboard
-  const dashboardFeatures = [
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-        </svg>
-      ),
-      title: 'Dashboard accessible partout',
-      description: 'Web & mobile, 24/7, depuis n\'importe quel appareil',
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      title: 'Vue de Transaction en temps réel',
-      description: 'Chaque opération tracée instantanément',
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-      title: 'Transparence des revenus',
-      description: 'Rapports détaillés pour chaque partenaire',
-    },
-  ];
-
-  // Certifications
-  const certifications = [
-    {
-      icon: 'check',
-      title: 'Certifications & Conformité',
-      status: 'Obtenues',
-      color: 'text-[#F9A825]',
-    },
-    {
-      icon: 'hourglass',
-      title: 'Certification ANTIC',
-      status: 'En cours',
-      color: 'text-gray-500',
-    },
-    {
-      icon: 'check',
-      title: 'Autorisations Cameroun',
-      status: 'Obtenues',
-      color: 'text-[#F9A825]',
-    },
-  ];
+  const dashIcons = [<DashIcon1 key="d1" />, <DashIcon2 key="d2" />, <DashIcon3 key="d3" />];
+  const dashboardFeatures = t.software.dashboardFeatures.map((f, i) => ({
+    icon: dashIcons[i],
+    title: f.title,
+    description: f.desc,
+  }));
+  const certifications = t.software.certs.map((c, i) => ({
+    icon: i === 1 ? 'hourglass' : 'check',
+    title: c.title,
+    status: c.status,
+    color: i === 1 ? 'text-gray-500' : 'text-[#F9A825]',
+  }));
 
   return (
     <section className="w-full bg-white pt-8 md:pt-10 pb-16 md:pb-20">
@@ -100,13 +68,13 @@ export default function SoftwareUXSection() {
           <div className="max-w-4xl mx-auto text-center">
             {/* En-tête */}
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-              NOTRE LOGICIEL
+              {t.software.label}
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight">
-              Une infrastructure logicielle pensée pour la performance et le contrôle en temps réel
+              {t.software.title}
             </h2>
             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-              Nous avons développé une infrastructure logicielle pensée pour être compatible avec toutes les technologies Mobile Money, intégrations IPI, structures serveurs, types de GAB et partenaires mobiles. Une expérience utilisateur ergonomique et rapide, avec un contrôle administratif en temps réel pour les partenaires.
+              {t.software.subtitle}
             </p>
 
             {/* Badges de fonctionnalités */}
@@ -133,19 +101,19 @@ export default function SoftwareUXSection() {
           {/* ========== BLOC DE GAUCHE : VUE DASHBOARD ========== */}
           <div className="bg-[#0D1B2A] p-5 md:p-6 relative overflow-hidden">
               <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4 text-center">
-                VUE DASHBOARD
+                {t.software.dashboardLabel}
               </p>
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 text-center">
-                Mobile Wallet ATM & Transaction Control
+                {t.software.dashboardTitle}
               </h3>
               <p className="text-gray-300 text-sm md:text-base mb-8">
-                Pilotez l&apos;ensemble de votre réseau de GAB depuis un seul tableau de bord centralisé
+                {t.software.dashboardSubtitle}
               </p>
 
               <div className="w-full max-h-[200px] md:max-h-[240px] mb-6 flex items-center justify-center overflow-hidden rounded-lg">
                 <Image
                   src="/images/vue-dashboard.png"
-                  alt="Dashboard MobileWallet - tableau de bord centralisé"
+                  alt={t.software.altDashboard}
                   width={480}
                   height={240}
                   className="w-full h-full object-contain"
@@ -171,19 +139,19 @@ export default function SoftwareUXSection() {
           <div className="bg-gray-50 p-5 md:p-6 relative">
             {/* En-tête */}
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4 text-center">
-              VUE GAB
+              {t.software.gabLabel}
             </p>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight text-center">
-              Une expérience utilisateur pensée pour l&apos;Afrique
+              {t.software.gabTitle}
             </h2>
             <p className="text-black text-base md:text-lg mb-8 leading-relaxed">
-              Interface intuitive, multilingue, multi-opérateurs — certifiée aux normes internationales
+              {t.software.gabSubtitle}
             </p>
 
             <div className="w-full max-h-[200px] md:max-h-[240px] mb-6 flex items-center justify-center overflow-hidden rounded-lg">
               <Image
                 src="/images/vue-gab.png"
-                alt="GAB MobileWallet - expérience utilisateur"
+                alt={t.software.altGAB}
                 width={480}
                 height={240}
                 className="w-full h-full object-contain"

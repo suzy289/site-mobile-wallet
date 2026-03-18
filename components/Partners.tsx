@@ -1,6 +1,10 @@
+'use client';
+
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Partners() {
+  const { t } = useLanguage();
   const partners = [
     { name: 'UBA', bgColor: 'bg-red-600', textColor: 'text-white', logo: '/images/uba.png' },
     { name: 'NCR', bgColor: 'bg-green-600', textColor: 'text-white', logo: '/images/ncr.png' },
@@ -17,7 +21,7 @@ export default function Partners() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 min-w-0">
         {/* Titre */}
         <h2 className="text-black text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 tracking-[2px] uppercase">
-          NOS PARTENAIRES
+          {t.partners.title}
         </h2>
 
         {/* Grille de logos */}

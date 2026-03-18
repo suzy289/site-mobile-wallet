@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Composants SVG pour les différents modèles de GAB
 
@@ -116,46 +117,17 @@ const MuralATM = () => (
 );
 
 export default function SolutionsSection() {
+  const { t } = useLanguage();
   const statistics = [
-    {
-      value: '07 ans',
-      label: "d'expérience terrain",
-    },
-    {
-      value: '3 modèles',
-      label: 'de GAB développés',
-    },
-    {
-      value: '100%',
-      label: 'adapté au marché africain',
-    },
+    { value: t.solutions.stat1Value, label: t.solutions.stat1 },
+    { value: t.solutions.stat2Value, label: t.solutions.stat2 },
+    { value: t.solutions.stat3Value, label: t.solutions.stat3 },
   ];
 
   const models = [
-    {
-      name: 'Modèle Compact',
-      description: 'Idéal pour les petits points de service',
-      badge: 'Coffre sécurisé certifié',
-      badgeColor: 'bg-[#0D1117]',
-      image: <Image src="/images/modele-compact-gab.png" alt="Modèle Compact GAB Mobile Money" width={400} height={300} className="w-full h-full object-contain" />,
-      recommended: false,
-    },
-    {
-      name: 'Modèle Premium',
-      description: 'Notre bestseller - haute capacité',
-      badge: 'Standards bancaires - Conformes',
-      badgeColor: 'bg-gradient-to-r from-[#F9A825] to-[#F57C00]',
-      image: <Image src="/images/modele-premium-gab.png" alt="Modèle Premium GAB Mobile Money" width={400} height={300} className="w-full h-full object-contain" />,
-      recommended: true,
-    },
-    {
-      name: 'Modèle Mural',
-      description: 'Compact, discret, haute disponibilité',
-      badge: 'Déploiement rapide',
-      badgeColor: 'bg-[#0D1117]',
-      image: <Image src="/images/modele-mural-gab.png" alt="Modèle Mural GAB Mobile Money" width={400} height={300} className="w-full h-full object-contain" />,
-      recommended: false,
-    },
+    { name: t.solutions.compact, description: t.solutions.compactDesc, badge: t.solutions.compactBadge, badgeColor: 'bg-[#0D1117]', image: <Image src="/images/modele-compact-gab.png" alt={t.solutions.compact} width={400} height={300} className="w-full h-full object-contain" />, recommended: false },
+    { name: t.solutions.premium, description: t.solutions.premiumDesc, badge: t.solutions.premiumBadge, badgeColor: 'bg-gradient-to-r from-[#F9A825] to-[#F57C00]', image: <Image src="/images/modele-premium-gab.png" alt={t.solutions.premium} width={400} height={300} className="w-full h-full object-contain" />, recommended: true },
+    { name: t.solutions.mural, description: t.solutions.muralDesc, badge: t.solutions.muralBadge, badgeColor: 'bg-[#0D1117]', image: <Image src="/images/modele-mural-gab.png" alt={t.solutions.mural} width={400} height={300} className="w-full h-full object-contain" />, recommended: false },
   ];
 
   const techPartners = [
@@ -174,13 +146,13 @@ export default function SolutionsSection() {
         {/* En-tête : Expertise & Statistiques */}
         <div className="text-center mb-12 md:mb-16">
           <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-            NOS SOLUTIONS
+            {t.solutions.label}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
-            7 ans d&apos;expertise au service des GAB Mobile Money en Afrique
+            {t.solutions.title}
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto mb-12 leading-relaxed">
-            Nous avons pendant plus de 07 ans travaillé avec les meilleurs fournisseurs pour concevoir des GAB Mobile Money entièrement adaptés aux besoins des utilisateurs et pour la rentabilité des partenaires.
+            {t.solutions.subtitle}
           </p>
 
           {/* Statistiques clés */}
@@ -207,13 +179,13 @@ export default function SolutionsSection() {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 min-w-0">
             <div className="mb-8">
               <p className="text-[#F9A825] text-base md:text-lg font-semibold mb-2">
-                La solution hardware
+                {t.solutions.hardwareTitle}
               </p>
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
-                Des GAB conçus pour l&apos;Afrique, certifiés aux standards mondiaux
+                {t.solutions.hardwareSubtitle}
               </h3>
               <p className="text-gray-600 text-sm md:text-base">
-                Développé avec les meilleurs fournisseurs de guichets dans le monde
+                {t.solutions.hardwareDesc}
               </p>
             </div>
 
@@ -231,7 +203,7 @@ export default function SolutionsSection() {
                 {/* Badge RECOMMANDÉ */}
                 {model.recommended && (
                   <div className="absolute -top-3 -right-3 bg-[#F9A825] text-black text-xs font-bold px-3 py-1 rounded-full">
-                    RECOMMANDÉ
+                    {t.solutions.recommended}
                   </div>
                 )}
 
@@ -269,10 +241,10 @@ export default function SolutionsSection() {
         <div className="mt-20 md:mt-24 pt-12 md:pt-16 border-t border-gray-200">
           <div className="text-center mb-8 md:mb-12">
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-              NOS PARTENAIRES TECHNOLOGIQUES
+              {t.solutions.partnersTitle}
             </p>
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
-              Les leaders mondiaux du hardware bancaire
+              {t.solutions.partnersSubtitle}
             </h3>
           </div>
 

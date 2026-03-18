@@ -1,55 +1,17 @@
 'use client';
 
+import { useLanguage } from '@/contexts/LanguageContext';
+
 export default function ROISection() {
-  // Données de comparaison ROI
+  const { t } = useLanguage();
   const roiComparison = [
-    {
-      title: '1 GAB / 1 Opérateur',
-      icon: '🏧',
-      roi: '3.7 Années',
-      roiProgress: 25,
-      revenue: '7.4 M XAF',
-      type: 'mono',
-    },
-    {
-      title: '1 GAB / Multi Opérateur',
-      icon: '⚡',
-      roi: '1.25 Années',
-      roiProgress: 95,
-      revenue: '22.2 M XAF',
-      type: 'multi',
-      badge: 'RECOMMANDÉ',
-      speedBadge: '3X plus rapide',
-    },
-    {
-      title: 'Pack 3 GAB (01 opérateur)',
-      icon: '🏧',
-      iconCount: 3,
-      roi: '3.2 Années',
-      roiProgress: 30,
-      revenue: '22.15 M XAF',
-      type: 'mono',
-    },
-    {
-      title: 'Pack 3 GAB (Multi-opérateurs)',
-      icon: '⚡',
-      iconCount: 3,
-      roi: '1.1 Années',
-      roiProgress: 95,
-      revenue: '66.45 M XAF',
-      type: 'multi',
-      badge: 'MEILLEUR ROI',
-      speedBadge: '3X plus rapide',
-    },
+    { title: t.roi.card1, icon: '🏧', roi: t.roi.roi1, roiProgress: 25, revenue: '7.4 M XAF', type: 'mono' },
+    { title: t.roi.card2, icon: '⚡', roi: t.roi.roi2, roiProgress: 95, revenue: '22.2 M XAF', type: 'multi', badge: t.roi.badgeRecommended, speedBadge: t.roi.speedBadge },
+    { title: t.roi.card3, icon: '🏧', iconCount: 3, roi: t.roi.roi3, roiProgress: 30, revenue: '22.15 M XAF', type: 'mono' },
+    { title: t.roi.card4, icon: '⚡', iconCount: 3, roi: t.roi.roi4, roiProgress: 95, revenue: '66.45 M XAF', type: 'multi', badge: t.roi.badgeBestROI, speedBadge: t.roi.speedBadge },
   ];
 
-  // Avantages clés (sans icônes)
-  const advantages = [
-    { title: 'ROI Rapide', description: '1 à 1,6 an en multi-opérateurs, supérieur aux franchisés traditionnelles' },
-    { title: 'Modèle Scalable', description: 'Franchise clé en main, expansion rapide, support complet' },
-    { title: 'Marché Structurel', description: 'Croissance +25%/an du Mobile Money, besoin essentiel en Afrique' },
-    { title: 'Standards Bancaires', description: 'Sécurité, fiabilité et qualité équivalentes au secteur bancaire' },
-  ];
+  const advantages = t.roi.advantages;
 
   // Composant pour une carte ROI
   const ROICard = ({ data, isMulti = false }: { data: any; isMulti?: boolean }) => {
@@ -60,7 +22,7 @@ export default function ROISection() {
     const revenueMatch = revenueStr.match(/^(.+?)\s+(XAF)$/);
     const revenueValue = revenueMatch ? revenueMatch[1] : revenueStr;
     const revenueCurrency = revenueMatch ? revenueMatch[2] : '';
-    const revenueLabel = data.title.includes('Pack') ? 'Revenu annuel projeté' : 'Revenu annuel estimé';
+    const revenueLabel = data.title.includes('Pack') ? t.roi.revenueProj : t.roi.revenueEst;
 
     return (
       <div
@@ -73,7 +35,7 @@ export default function ROISection() {
         {/* Badge RECOMMANDÉ / MEILLEUR ROI (cartes multi) */}
         {data.badge && (
           <div className="absolute top-4 right-4 bg-white text-black rounded-full px-4 py-2 flex items-center gap-2 shadow-md z-10">
-            {data.badge === 'RECOMMANDÉ' ? (
+            {data.badge === t.roi.badgeRecommended ? (
               <svg className="w-4 h-4 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
@@ -113,7 +75,7 @@ export default function ROISection() {
           {/* Colonne gauche : Retour sur investissement (ROI) */}
           <div className={`pr-0 md:pr-6 md:border-r pb-4 md:pb-0 md:border-b-0 border-b ${isMulti ? 'border-white/30' : 'border-gray-500/50'} mb-0`}>
             <p className={`text-sm mb-2 ${isMulti ? 'text-white/90' : 'text-gray-400'}`}>
-              Retour sur investissement (ROI)
+              {t.roi.roiLabel}
             </p>
             <div className="flex items-baseline gap-2 flex-wrap mb-2">
               <span className={`text-3xl md:text-4xl font-bold ${isMulti ? 'text-white' : 'text-white'}`}>
@@ -186,13 +148,13 @@ export default function ROISection() {
           {/* En-tête */}
           <div className="text-center mb-12 md:mb-16">
           <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-            QUELQUES CHIFFRES
+            {t.roi.label}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Découvrez la puissance du modèle multi-opérateurs
+            {t.roi.title}
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
-            Projections basées sur les données réelles du marché camerounais
+            {t.roi.subtitle}
           </p>
         </div>
 
@@ -231,7 +193,7 @@ export default function ROISection() {
             <svg className="w-5 h-5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>Basé sur les données réelles au CMR</span>
+            <span>{t.roi.basedOnData}</span>
           </div>
         </div>
         </div>
@@ -243,11 +205,11 @@ export default function ROISection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200">
             {advantages.map((advantage, index) => (
               <div key={index} className="text-center py-6 md:py-0 md:px-6 first:pt-0 md:first:pl-0 last:pb-0 md:last:pr-0">
-                <h4 className={`font-bold text-lg md:text-xl mb-2 ${advantage.title === 'ROI Rapide' || advantage.title === 'Marché Structurel' ? 'text-black' : 'text-[#F9A825]'}`}>
+                <h4 className={`font-bold text-lg md:text-xl mb-2 ${advantage.title === t.roi.advantages[0].title || advantage.title === t.roi.advantages[2].title ? 'text-black' : 'text-[#F9A825]'}`}>
                   {advantage.title}
                 </h4>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                  {advantage.description}
+                  {advantage.desc}
                 </p>
               </div>
             ))}

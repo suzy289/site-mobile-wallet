@@ -1,6 +1,7 @@
 'use client';
 
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Composants d'icônes SVG
 const AlertIcon = () => (
@@ -47,68 +48,20 @@ const DropletIcon = () => (
 );
 
 export default function MarketSection() {
+  const { t } = useLanguage();
   const statistics = [
-    {
-      value: '24,86M',
-      label: 'Comptes Mobile Money au Cameroun',
-      highlight: false,
-    },
-    {
-      value: '80%+',
-      label: 'Pénétration mobile en Afrique',
-      highlight: true,
-    },
-    {
-      value: '+25%',
-      label: 'Croissance annuelle moyenne',
-      highlight: false,
-    },
-    {
-      value: '500M+',
-      label: 'Utilisateurs Mobile Money en Afrique',
-      highlight: false,
-    },
+    { value: '24,86M', label: t.market.stat1, highlight: false },
+    { value: '80%+', label: t.market.stat2, highlight: true },
+    { value: '+25%', label: t.market.stat3, highlight: false },
+    { value: '500M+', label: t.market.stat4, highlight: false },
   ];
 
-  const cameroonData = [
-    '11x plus de comptes que les banques',
-    '5x plus de clients que les banques',
-    '2,2 milliards de transactions par an',
-    '22 000 Md XAF/an',
-  ];
-
-  const limitations = [
-    {
-      icon: <AlertIcon />,
-      title: 'Données limitées',
-      description: 'Manque de visibilité et de traçabilité',
-    },
-    {
-      icon: <ClockIcon />,
-      title: 'Disponibilité limitée',
-      description: 'Pas de service 24/7, horaires restreints',
-    },
-    {
-      icon: <ChartIcon />,
-      title: 'Scalabilité difficile',
-      description: 'Infrastructure non adaptée à la croissance',
-    },
-    {
-      icon: <LockIcon />,
-      title: 'Insécurité',
-      description: 'Risques de vol, fraudes, arnaques fréquentes',
-    },
-    {
-      icon: <UsersIcon />,
-      title: 'Visibilité',
-      description: 'Manque de compensation',
-    },
-    {
-      icon: <DropletIcon />,
-      title: 'Manque de liquidités',
-      description: 'Ruptures fréquentes de cash aux points de service',
-    },
-  ];
+  const icons = [<AlertIcon key="a" />, <ClockIcon key="b" />, <ChartIcon key="c" />, <LockIcon key="d" />, <UsersIcon key="e" />, <DropletIcon key="f" />];
+  const limitations = t.market.limits.map((lim, i) => ({
+    icon: icons[i],
+    title: lim.title,
+    description: lim.desc,
+  }));
 
   return (
     <section id="marche" className="w-full bg-white scroll-mt-20">
@@ -117,13 +70,13 @@ export default function MarketSection() {
         <AnimateOnScroll animation="fade-up">
           {/* Titre principal */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6">
-            <span className="text-black">Le Marché du Mobile Money en </span>
-            <span className="text-[#F9A825]">Afrique</span>
+            <span className="text-black">{t.market.titleBefore}</span>
+            <span className="text-[#F9A825]">{t.market.titleAfter}</span>
           </h2>
 
           {/* Sous-titre */}
           <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12 text-lg leading-relaxed">
-            Le Mobile Money est devenu le compte bancaire de fait pour des millions d&apos;Africains. Pourtant, l&apos;infrastructure de cash-in/cash-out reste insuffisante, limitée et peu fiable.
+            {t.market.subtitle}
           </p>
         </AnimateOnScroll>
 
@@ -160,13 +113,13 @@ export default function MarketSection() {
             <div className="flex items-start gap-4 flex-shrink-0 lg:w-auto">
               <div className="w-1 h-12 bg-[#F9A825] rounded-full"></div>
               <h3 className="text-2xl md:text-3xl font-bold text-[#F9A825] whitespace-nowrap">
-                Au Cameroun
+                {t.market.cameroon}
               </h3>
             </div>
 
             {/* Badges de données à droite - sur 2 lignes (2x2) */}
             <div className="grid grid-cols-2 gap-3 flex-1 max-w-4xl">
-              {cameroonData.map((data, index) => (
+              {t.market.cameroonData.map((data, index) => (
                 <div
                   key={index}
                   className="bg-[#F5F5F5] text-black px-4 py-3 rounded-full text-sm md:text-base font-medium text-center hover:bg-[#F9A825]/20 hover:border hover:border-[#F9A825]/50 transition-colors duration-200"
@@ -187,13 +140,13 @@ export default function MarketSection() {
           {/* En-tête */}
           <div className="text-center mb-4 md:mb-6">
             <p className="text-[#F9A825] text-xs font-semibold uppercase tracking-wider mb-0.5">
-              ANALYSE CRITIQUE
+              {t.market.analysisTitle}
             </p>
             <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-0.5">
-              Les Limites du Modèle Actuel
+              {t.market.analysisSubtitle}
             </h2>
             <p className="text-gray-300 text-xs max-w-3xl mx-auto">
-              Les défis structurels qui freinent la croissance du Mobile Money en Afrique
+              {t.market.analysisDesc}
             </p>
           </div>
 

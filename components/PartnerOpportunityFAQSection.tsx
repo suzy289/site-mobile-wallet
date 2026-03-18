@@ -3,53 +3,19 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function PartnerOpportunityFAQSection() {
-  const [openIndex, setOpenIndex] = useState(0); // Première question ouverte par défaut
+  const { t } = useLanguage();
+  const [openIndex, setOpenIndex] = useState(0);
+  const faqItems = t.faq.items;
 
-  // Données des pays cibles
   const targetCountries = [
     { name: 'Côte d\'Ivoire', flag: '🇨🇮', flagImage: '/images/flag-cote-ivoire.png' },
     { name: 'RDC', flag: '🇨🇩', flagImage: '/images/flag-rdc.png' },
     { name: 'Ghana', flag: '🇬🇭', flagImage: '/images/flag-ghana.png' },
     { name: 'Sénégal', flag: '🇸🇳', flagImage: '/images/flag-senegal.png' },
     { name: 'Et plus...', flag: '🌍' },
-  ];
-
-  // Données de la FAQ (8 questions)
-  const faqItems = [
-    {
-      question: 'Quel est le montant minimum d\'investissement pour démarrer ?',
-      answer: 'L\'investissement de départ comprend le coût de la machine, l\'infrastructure du site (énergie solaire, satellite, sécurité, construction) et un capital de fonctionnement. À titre indicatif, démarrer avec 1 GAB nécessite environ 27,6 M XAF, incluant le capital de fonctionnement recommandé. Des formules Pack 3 GAB offrent des conditions préférentielles significatives.\n\nChaque projet est unique. Contactez notre équipe pour une simulation financière personnalisée selon votre configuration.',
-    },
-    {
-      question: 'Comment fonctionne le partage des revenus ?',
-      answer: 'La répartition s\'applique sur le résultat net après déduction de toutes les charges. Le franchisé perçoit la part majoritaire, MobileWallet retient une part pour la technologie et le support, et une part revient au super-franchisé pour la coordination locale. Le modèle est transparent et contractuellement défini dès le départ.\n\nLa structure exacte dépend du modèle de partenariat choisi. Contactez notre équipe pour une projection de revenus adaptée à votre situation.',
-    },
-    {
-      question: 'Quels opérateurs Mobile Money sont compatibles ?',
-      answer: 'La plateforme est multi-opérateurs et intègre MTN Mobile Money, UBA M2U, Orange Money, Wave, Sara Money, Afriland, etc. C\'est cette capacité multi-opérateurs qui maximise vos revenus : chaque opérateur supplémentaire connecté à votre GAB multiplie directement votre chiffre d\'affaires.\n\nLes opérateurs disponibles varient selon le pays. Contactez notre équipe pour les intégrations actives dans votre zone.',
-    },
-    {
-      question: 'Comment est assurée la maintenance et le support technique ?',
-      answer: 'MobileWallet prend en charge la maintenance logicielle, le monitoring 24h/7j, le support technique dédié, la logistique sécurisée des fonds et l\'assurance tous risques des machines. En tant que franchisé, vous suivez vos performances via votre dashboard — sans aucune compétence technique requise.\n\nLes conditions de maintenance varient selon le modèle de partenariat choisi. Notre équipe vous détaille les modalités selon votre projet.',
-    },
-    {
-      question: 'Est-il possible d\'intégrer le système à nos GAB existants ?',
-      answer: 'Oui. Si vous disposez déjà d\'un parc de GAB des marques NCR, Diebold Nixdorf, Hyosung ou Kiosk, MobileWallet peut les connecter à sa plateforme via intégration API. Vous bénéficiez alors du réseau d\'opérateurs, du dashboard et du support 24/7, sans changer vos machines.\n\nLa compatibilité dépend du modèle et de la configuration de vos machines. Contactez notre équipe pour un audit de votre parc existant.',
-    },
-    {
-      question: 'Quel est le délai de livraison et d\'installation d\'un GAB ?',
-      answer: 'De la commande à la mise en service, comptez généralement 6 à 12 semaines. Ce délai inclut l\'expédition, le dédouanement, l\'aménagement du site, l\'installation des équipements (énergie solaire, satellite, caméra) et la configuration logicielle. Une formation complète est assurée à la mise en service.\n\nChaque projet étant unique, contactez notre équipe pour un planning personnalisé.',
-    },
-    {
-      question: 'Le logiciel est-il certifié aux standards de sécurité bancaire ?',
-      answer: 'Oui. La plateforme est développée selon les standards de l\'industrie bancaire : chiffrement de bout en bout, conformité KYC/AML, audits réguliers et certification ANTIC au Cameroun. Les machines sont physiquement sécurisées avec surveillance 24/7 et transport blindé des fonds.\n\nLes certifications varient selon les pays. Notre équipe vous accompagne dans les démarches réglementaires locales.',
-    },
-    {
-      question: 'Dois-je avoir un agrément bancaire pour devenir franchisé ?',
-      answer: 'Non. MobileWallet gère l\'ensemble de la conformité réglementaire, les connexions aux opérateurs Mobile Money et les protocoles de sécurité. Votre rôle se concentre sur les emplacements et le capital. Aucune expertise technique ou bancaire n\'est requise.\n\nPour un déploiement dans un nouveau pays, notre équipe vous accompagne dans les démarches réglementaires locales.',
-    },
   ];
 
   const toggleQuestion = (index: number) => {
@@ -86,13 +52,13 @@ export default function PartnerOpportunityFAQSection() {
             {/* Contenu Gauche */}
             <div>
               <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-                OPPORTUNITÉ EXCLUSIVE
+                {t.opportunity.label}
               </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                Devenez Partenaire Pays Exclusif
+                {t.opportunity.title}
               </h2>
               <p className="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">
-                Prenez la tête de l&apos;expansion dans votre pays. Représentation exclusive et revenus sur l&apos;ensemble du réseau national.
+                {t.opportunity.subtitle}
               </p>
 
               {/* Badges pays : pilules frosted style image (drapeaux bien visibles) */}
@@ -134,12 +100,12 @@ export default function PartnerOpportunityFAQSection() {
                   </svg>
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                  Opportunité régionale
+                  {t.opportunity.regionalTitle}
                 </h3>
               </div>
 
               <p className="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">
-                Soyez le point de contact unique pour toutes les opérations Mobile Wallet dans votre pays.
+                {t.opportunity.regionalDesc}
               </p>
 
               <ul className="space-y-3 mb-8">
@@ -147,19 +113,19 @@ export default function PartnerOpportunityFAQSection() {
                   <svg className="w-6 h-6 text-[#F9A825] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700 text-sm md:text-base">Exclusivité territoriale nationale</span>
+                  <span className="text-gray-700 text-sm md:text-base">{t.opportunity.bullet1}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg className="w-6 h-6 text-[#F9A825] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700 text-sm md:text-base">Revenus sur tout le réseau de votre pays</span>
+                  <span className="text-gray-700 text-sm md:text-base">{t.opportunity.bullet2}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg className="w-6 h-6 text-[#F9A825] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700 text-sm md:text-base">Support dédié et formation complète</span>
+                  <span className="text-gray-700 text-sm md:text-base">{t.opportunity.bullet3}</span>
                 </li>
               </ul>
 
@@ -168,7 +134,7 @@ export default function PartnerOpportunityFAQSection() {
                   href="#contact"
                   className="bg-[#F9A825] text-black font-semibold py-3 px-8 rounded-lg text-base md:text-lg hover:bg-[#F57C00] hover:scale-105 transition-all duration-200 shadow-lg inline-block text-center"
                 >
-                  Contactez l&apos;équipe →
+                  {t.opportunity.contactBtn}
                 </Link>
               </div>
             </div>
@@ -182,13 +148,13 @@ export default function PartnerOpportunityFAQSection() {
           {/* En-tête */}
           <div className="text-center mb-12 md:mb-16">
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-              FAQ
+              {t.faq.label}
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
-              Questions Fréquentes
+              {t.faq.title}
             </h2>
             <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
-              Tout ce que vous devez savoir avant de démarrer avec MobileWallet
+              {t.faq.subtitle}
             </p>
           </div>
 
@@ -211,7 +177,7 @@ export default function PartnerOpportunityFAQSection() {
                     <div className="p-5 md:p-6">
                       <div className="flex items-start justify-between gap-4">
                         <h3 className="font-bold text-gray-900 text-base md:text-lg flex-1">
-                          {item.question}
+                          {item.q}
                         </h3>
                         <div className="flex-shrink-0 mt-0.5">
                           {openIndex === index ? (
@@ -229,7 +195,7 @@ export default function PartnerOpportunityFAQSection() {
                     {openIndex === index && (
                       <div className="absolute top-full left-0 right-0 z-20 mt-0 rounded-b-xl border border-t-0 border-gray-200 bg-white p-5 md:p-6 shadow-lg max-h-[280px] overflow-y-auto animate-faq-answer-soft">
                         <p className="text-gray-500 text-sm md:text-base leading-relaxed whitespace-pre-line">
-                          {item.answer}
+                          {item.a}
                         </p>
                       </div>
                     )}
@@ -254,7 +220,7 @@ export default function PartnerOpportunityFAQSection() {
                     <div className="p-5 md:p-6">
                       <div className="flex items-start justify-between gap-4">
                         <h3 className="font-bold text-gray-900 text-base md:text-lg flex-1">
-                          {item.question}
+                          {item.q}
                         </h3>
                         <div className="flex-shrink-0 mt-0.5">
                           {openIndex === index ? (
@@ -272,7 +238,7 @@ export default function PartnerOpportunityFAQSection() {
                     {openIndex === index && (
                       <div className="absolute top-full left-0 right-0 z-20 mt-0 rounded-b-xl border border-t-0 border-gray-200 bg-white p-5 md:p-6 shadow-lg max-h-[280px] overflow-y-auto animate-faq-answer-soft">
                         <p className="text-gray-500 text-sm md:text-base leading-relaxed whitespace-pre-line">
-                          {item.answer}
+                          {item.a}
                         </p>
                       </div>
                     )}
@@ -286,24 +252,24 @@ export default function PartnerOpportunityFAQSection() {
           <div className="flex justify-center mt-12 md:mt-16">
             <div className="bg-[#FFF7ED] rounded-xl p-8 md:p-10 max-w-3xl w-full hover:shadow-lg hover:border hover:border-[#F9A825]/30 transition-all duration-300">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 text-center mb-4">
-                Une question spécifique ?
+                {t.faq.questionTitle}
               </h3>
               <p className="text-gray-600 text-base md:text-lg text-center mb-8 max-w-2xl mx-auto leading-relaxed">
-                Notre équipe est disponible pour analyser votre projet et vous proposer la solution la plus adaptée.
+                {t.faq.questionSubtitle}
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <Link
                   href="#contact"
                   className="w-full sm:w-auto bg-[#F9A825] text-black font-semibold py-3 px-8 rounded-lg text-base md:text-lg hover:bg-[#F57C00] transition-colors duration-200 text-center inline-block"
                 >
-                  Contactez l&apos;équipe →
+                  {t.faq.contactBtn}
                 </Link>
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent('openDocumentationModal'))}
                   className="w-full sm:w-auto bg-transparent border-2 border-black text-gray-900 font-semibold py-3 px-8 rounded-lg text-base md:text-lg hover:bg-black/5 hover:scale-[1.02] transition-all duration-200 text-center"
                 >
-                  Consulter la documentation
+                  {t.faq.docBtn}
                 </button>
               </div>
             </div>

@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactSecurityFooterSection() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,7 +31,7 @@ export default function ContactSecurityFooterSection() {
       return true;
     }
     if (!emailRegex.test(email)) {
-      setErrors((prev) => ({ ...prev, email: 'Email invalide' }));
+      setErrors((prev) => ({ ...prev, email: t.contactForm.invalidEmail }));
       return false;
     }
     setErrors((prev) => ({ ...prev, email: '' }));
@@ -43,7 +45,7 @@ export default function ContactSecurityFooterSection() {
       return true;
     }
     if (!phoneRegex.test(phone) || phone.length < 8) {
-      setErrors((prev) => ({ ...prev, phone: 'Numéro de téléphone invalide' }));
+      setErrors((prev) => ({ ...prev, phone: t.contactForm.invalidPhone }));
       return false;
     }
     setErrors((prev) => ({ ...prev, phone: '' }));
@@ -88,10 +90,10 @@ export default function ContactSecurityFooterSection() {
         setFormData({ name: '', email: '', country: 'Cameroun', phone: '', message: '' });
         setErrors({ email: '', phone: '' });
       } else {
-        setSubmitError(data.error || 'Une erreur est survenue.');
+        setSubmitError(data.error || t.contactForm.errorGeneric);
       }
     } catch {
-      setSubmitError('Impossible d\'envoyer le message. Vérifiez votre connexion et que WAMP est démarré.');
+      setSubmitError(t.contactForm.errorNetwork);
     } finally {
       setLoading(false);
     }
@@ -155,12 +157,11 @@ export default function ContactSecurityFooterSection() {
   const selectedCountry = countries.find((c) => c.name === formData.country) ?? countries[0];
   const displayCode = selectedCountry.code ? `+${selectedCountry.code}` : '';
 
-  // Fonctionnalités de sécurité
   const securityFeatures = [
-    { title: 'Données Chiffrées', description: 'Chiffrement de bout en bout sur toutes les transactions' },
-    { title: 'Accès Sécurisé', description: 'Authentification multi-facteurs pour tous les accès admin' },
-    { title: 'Traçabilité Totale', description: 'Logs complets et traçabilité de toutes les transactions' },
-    { title: 'Certifications', description: 'Standards bancaires internationaux et conformité réglementaire' },
+    { title: t.security.dataEncrypted, description: t.security.dataEncryptedDesc },
+    { title: t.security.secureAccess, description: t.security.secureAccessDesc },
+    { title: t.security.traceability, description: t.security.traceabilityDesc },
+    { title: t.security.certifications, description: t.security.certificationsDesc },
   ];
 
   return (
@@ -192,17 +193,17 @@ export default function ContactSecurityFooterSection() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex-1">
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">
-                Ne manquez pas cette opportunité
+                {t.cta.title}
               </h3>
               <p className="text-gray-100 text-base md:text-lg max-w-xl">
-                Les territoires exclusifs sont limités. Réservez votre zone dès aujourd&apos;hui.
+                {t.cta.subtitle}
               </p>
             </div>
             <Link
               href="#contact"
               className="shrink-0 bg-transparent border-2 border-white text-white font-semibold px-8 py-3.5 rounded-full text-base md:text-lg hover:bg-white/10 transition-colors whitespace-nowrap inline-block text-center"
             >
-              Prendre un RDV →
+              {t.cta.btn}
             </Link>
           </div>
         </div>
@@ -224,13 +225,13 @@ export default function ContactSecurityFooterSection() {
                 {/* En-tête : label + titre centré */}
                 <div className="text-center mb-12 md:mb-16">
                   <span className="inline-block px-4 py-1.5 bg-[#F9A825]/20 text-[#F9A825] text-xs font-bold uppercase tracking-widest rounded-full mb-6">
-                    Confiance &amp; Sécurité
+                    {t.security.label}
                   </span>
                   <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 max-w-3xl mx-auto leading-tight">
-                    Vos transactions protégées par une infrastructure bancaire
+                    {t.security.title}
                   </h2>
                   <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-                    Audits réguliers, normes internationales et certifications reconnues.
+                    {t.security.subtitle}
                   </p>
                 </div>
 
@@ -246,7 +247,7 @@ export default function ContactSecurityFooterSection() {
                     <svg className="w-6 h-6 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                     </svg>
-                    <span className="text-white font-semibold text-sm md:text-base">Audits réguliers</span>
+                    <span className="text-white font-semibold text-sm md:text-base">{t.security.auditsReguliers}</span>
                   </div>
                   <div className="flex items-center gap-3 px-5 py-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl hover:bg-emerald-500/20 transition-all duration-300">
                     <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -272,7 +273,7 @@ export default function ContactSecurityFooterSection() {
                 {/* Citation de confiance en bas */}
                 <div className="mt-12 md:mt-16 pt-8 border-t border-white/10">
                   <p className="text-center text-gray-500 text-sm md:text-base italic max-w-2xl mx-auto">
-                    « Des standards de l&apos;industrie bancaire appliqués à chaque niveau de notre plateforme. »
+                    {t.security.quote}
                   </p>
                 </div>
               </div>
@@ -290,12 +291,12 @@ export default function ContactSecurityFooterSection() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Partie Info (Sombre) */}
                 <div className="bg-[#0A0E1A] rounded-lg p-6 md:p-8 text-white">
-                  <p className="text-[#F9A825] text-xs md:text-sm uppercase tracking-wide mb-4">CONTACT</p>
+                  <p className="text-[#F9A825] text-xs md:text-sm uppercase tracking-wide mb-4">{t.footer.contactTitle}</p>
                   <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                    Réservez votre rendez-vous stratégique
+                    {t.contactForm.title}
                   </h3>
                   <p className="text-gray-300 text-sm md:text-base mb-8">
-                    Prenez un rendez-vous avec l&apos;un de nos experts et discutons de votre projet.
+                    {t.contactForm.subtitle}
                   </p>
 
                   {/* Garanties */}
@@ -304,19 +305,19 @@ export default function ContactSecurityFooterSection() {
                       <svg className="w-5 h-5 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      <span className="text-sm md:text-base">Réponse sous 24h ouvrées</span>
+                      <span className="text-sm md:text-base">{t.contactForm.response24h}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <svg className="w-5 h-5 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
-                      <span className="text-sm md:text-base">Échange 100% confidentiel</span>
+                      <span className="text-sm md:text-base">{t.contactForm.confidential}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <svg className="w-5 h-5 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                       </svg>
-                      <span className="text-sm md:text-base">Disponible pour toute l&apos;Afrique</span>
+                      <span className="text-sm md:text-base">{t.contactForm.availableAfrica}</span>
                     </div>
                   </div>
                 </div>
@@ -324,15 +325,15 @@ export default function ContactSecurityFooterSection() {
                 {/* Formulaire */}
                 <div className="flex flex-col items-center">
                   <h3 className="text-2xl md:text-3xl font-bold text-black mb-2 text-center">
-                    Réservez votre rendez-vous stratégique
+                    {t.contactForm.formTitle}
                   </h3>
                   <p className="text-gray-600 text-sm md:text-base mb-6 text-center">
-                    Remplissez le formulaire, notre équipe vous contacte rapidement.
+                    {t.contactForm.formSubtitle}
                   </p>
 
                   {submitSuccess && (
                     <div className="w-full max-w-xl mb-6 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg text-sm">
-                      ✓ Merci ! Votre message a été envoyé. Notre équipe vous contactera sous 24h.
+                      {t.contactForm.success}
                     </div>
                   )}
                   {submitError && (
@@ -345,7 +346,7 @@ export default function ContactSecurityFooterSection() {
                     {/* Nom Complet */}
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                          Nom Complet
+                          {t.contactForm.nameLabel}
                         </label>
                         <input
                           type="text"
@@ -361,7 +362,7 @@ export default function ContactSecurityFooterSection() {
                       {/* Email */}
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                          Email
+                          {t.contactForm.emailLabel}
                         </label>
                         <input
                           type="email"
@@ -380,7 +381,7 @@ export default function ContactSecurityFooterSection() {
                       {/* Pays */}
                       <div>
                         <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
-                          Pays
+                          {t.contactForm.countryLabel}
                         </label>
                         <select
                           id="country"
@@ -401,7 +402,7 @@ export default function ContactSecurityFooterSection() {
                       {/* Téléphone */}
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                          Téléphone
+                          {t.contactForm.phoneLabel}
                         </label>
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-2 px-3 py-3 border border-gray-300 rounded-l-lg bg-gray-50 min-w-[100px]">
@@ -429,7 +430,7 @@ export default function ContactSecurityFooterSection() {
                       {/* Message */}
                       <div className="flex flex-col items-center">
                         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2 w-full text-center">
-                          Votre Message
+                          {t.contactForm.messageLabel}
                         </label>
                         <textarea
                           id="message"
@@ -437,7 +438,7 @@ export default function ContactSecurityFooterSection() {
                           value={formData.message}
                           onChange={handleChange}
                           rows={4}
-                          placeholder="Décrivez votre projet en quelques lignes..."
+                          placeholder={t.contactForm.messagePlaceholder}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F9A825] focus:border-transparent outline-none resize-none"
                         />
                       </div>
@@ -447,7 +448,7 @@ export default function ContactSecurityFooterSection() {
                         <svg className="w-4 h-4 text-[#F9A825] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        <span>Vos données sont protégées et ne seront jamais partagées.</span>
+                        <span>{t.contactForm.privacy}</span>
                       </div>
 
                       {/* Bouton Submit */}
@@ -457,7 +458,7 @@ export default function ContactSecurityFooterSection() {
                           disabled={loading}
                           className="w-full max-w-md mx-auto bg-[#F9A825] text-black font-semibold py-4 px-6 rounded-lg text-base md:text-lg hover:bg-[#F57C00] hover:scale-[1.02] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
-                          {loading ? 'Envoi en cours...' : 'Envoyez votre message →'}
+                          {loading ? t.contactForm.sending : t.contactForm.submit}
                         </button>
                       </div>
                   </form>
@@ -484,7 +485,7 @@ export default function ContactSecurityFooterSection() {
                 />
               </div>
               <p className="text-white/70 text-sm mb-6">
-                L&apos;infrastructure de cashin et cashout en Afrique
+                {t.footer.tagline}
               </p>
               {/* Réseaux sociaux : Facebook et LinkedIn */}
               <div className="flex gap-3">
@@ -515,14 +516,14 @@ export default function ContactSecurityFooterSection() {
 
             {/* Colonne 2 : Navigation */}
             <div>
-              <h4 className="font-bold text-lg mb-4">Navigation</h4>
+              <h4 className="font-bold text-lg mb-4">{t.footer.navTitle}</h4>
               <ul className="space-y-2">
                 {[
-                  { label: 'Le marché', href: '#marche' },
-                  { label: 'Nos Solutions', href: '#solutions' },
-                  { label: 'À Propos', href: '#apropos' },
-                  { label: 'Nos formules', href: '#formules' },
-                  { label: 'Notre équipe', href: '#equipe' },
+                  { label: t.footer.links.market, href: '#marche' },
+                  { label: t.footer.links.solutions, href: '#solutions' },
+                  { label: t.footer.links.about, href: '#apropos' },
+                  { label: t.footer.links.plans, href: '#formules' },
+                  { label: t.footer.links.team, href: '#equipe' },
                 ].map((item) => (
                   <li key={item.href}>
                     <Link
@@ -538,14 +539,14 @@ export default function ContactSecurityFooterSection() {
 
             {/* Colonne 3 : Nos Solutions (formules + solutions) */}
             <div>
-              <h4 className="font-bold text-lg mb-4">Nos Solutions</h4>
+              <h4 className="font-bold text-lg mb-4">{t.footer.solutionsTitle}</h4>
               <ul className="space-y-2">
                 {[
-                  { label: 'Franchise Plan', href: '#formules' },
-                  { label: 'Bring Your ATM', href: '#formules' },
-                  { label: 'SaaS / White Label', href: '#formules' },
-                  { label: 'Partenaire Pays Exclusif', href: '#formules' },
-                  { label: 'Dashboard & Analytics', href: '#solutions' },
+                  { label: t.footer.links.franchise, href: '#formules' },
+                  { label: t.footer.links.bringATM, href: '#formules' },
+                  { label: t.footer.links.saas, href: '#formules' },
+                  { label: t.footer.links.partner, href: '#formules' },
+                  { label: t.footer.links.dashboard, href: '#solutions' },
                 ].map((item) => (
                   <li key={item.label}>
                     <Link
@@ -561,19 +562,19 @@ export default function ContactSecurityFooterSection() {
 
             {/* Colonne 4 : Contact */}
             <div>
-              <h4 className="font-bold text-lg mb-4">Contact</h4>
+              <h4 className="font-bold text-lg mb-4">{t.footer.contactTitle}</h4>
               <div className="flex items-center gap-2 text-white/70 text-sm mb-6">
                 <svg className="w-5 h-5 text-[#F9A825]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Douala, Cameroun & USA</span>
+                <span>{t.footer.location}</span>
               </div>
               <Link
                 href="#contact"
                 className="inline-block border-2 border-[#F9A825] text-white px-6 py-3 rounded-3xl hover:bg-[#F9A825] transition-colors text-sm font-semibold"
               >
-                Contactez-nous
+                {t.footer.contactBtn}
               </Link>
             </div>
           </div>
@@ -581,7 +582,7 @@ export default function ContactSecurityFooterSection() {
           {/* Barre de Copyright */}
           <div className="border-t border-white/10 pt-8">
             <p className="text-white/70 text-sm text-center">
-              © 2025 Mobile Wallet Incorporated. Tous droits réservés.
+              {t.footer.copyright}
             </p>
           </div>
         </div>

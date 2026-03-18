@@ -2,73 +2,23 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function RoadmapTestimonialsSection() {
+  const { t } = useLanguage();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  // Données de la roadmap (design aligné sur la maquette)
   const roadmapPhases = [
-    {
-      period: '2020-2024',
-      title: 'R&D & Pilote',
-      status: 'completed',
-      icon: 'check',
-      items: ['Conception', 'Pilote MTN', 'Autorisations'],
-      badge: 'Complété',
-      badgeIcon: 'check',
-    },
-    {
-      period: '2020-2026',
-      title: '(IN PROGRESS - featured)',
-      status: 'in-progress',
-      icon: 'lightning',
-      items: ['Réseau franchisés', 'Multi-opérateurs', 'Cert. ANTIC'],
-      badge: 'En cours',
-      badgeIcon: 'arrow',
-    },
-    {
-      period: '2025-2026',
-      title: 'Lancement Cameroun',
-      status: 'in-progress',
-      icon: 'lightning',
-      items: ['Réseau franchisés', 'Multi-opérateurs', 'Cert. ANTIC'],
-      badge: 'En cours',
-      badgeIcon: 'arrow',
-    },
-    {
-      period: '2027+',
-      title: 'Expansion Afrique',
-      status: 'upcoming',
-      icon: 'arrow',
-      items: ['Côte d\'Ivoire', 'RDC, Ghana', 'Sénégal'],
-      badge: 'À venir',
-      badgeIcon: 'arrow',
-    },
+    { period: '2020-2024', title: t.roadmap.phase1.title, status: 'completed' as const, icon: 'check', items: t.roadmap.phase1.items, badge: t.roadmap.phase1.badge, badgeIcon: 'check' },
+    { period: '2020-2026', title: t.roadmap.phase2.title, status: 'in-progress' as const, icon: 'lightning', items: t.roadmap.phase2.items, badge: t.roadmap.phase2.badge, badgeIcon: 'arrow' },
+    { period: '2025-2026', title: t.roadmap.phase3.title, status: 'in-progress' as const, icon: 'lightning', items: t.roadmap.phase3.items, badge: t.roadmap.phase3.badge, badgeIcon: 'arrow' },
+    { period: '2027+', title: t.roadmap.phase4.title, status: 'upcoming' as const, icon: 'arrow', items: t.roadmap.phase4.items, badge: t.roadmap.phase4.badge, badgeIcon: 'arrow' },
   ];
 
-  // Données des témoignages
   const testimonials = [
-    {
-      quote: 'Véritable levier pour l\'adoption du mobile money, la solution Mobile Wallet a été entièrement auditée par nos équipes. Son architecture et sa sécurité répondent aux exigences bancaires les plus strictes.',
-      author: '',
-      company: 'MTN Cameroun',
-      logo: '/images/MTN_logo-removebg-preview.png',
-      useLogoImage: true,
-    },
-    {
-      quote: 'Les GAB et l\'interface de Mobile Wallet sont les leviers parfaits pour rendre notre solution UBA M2U accessible à tous. Ce partenariat s\'est imposé comme une évidence, car il nous permet de toucher le plus grand nombre tout en assurant une sécurité digne de nos propres guichets bancaires UBA.',
-      author: '',
-      company: 'UBA Cameroun',
-      logo: '/images/UBA_logo-removebg-preview.png',
-      useLogoImage: true,
-    },
-    {
-      quote: 'En tant que super agent, la gestion d\'un réseau humain a toujours impliqué des failles de sécurité trop importantes. La solution Mobile Wallet me permet d\'éradiquer les risques de vol et de sécuriser entièrement mes flux. Je peux enfin me concentrer sur l\'essentiel : l\'expansion de mon activité et l\'ouverture d\'un maximum de points de service, une croissance qui était jusqu\'ici trop complexe et risquée à gérer.',
-      author: 'Franchisé indépendant',
-      company: 'Réseau MobileWallet - Yaoundé',
-      logo: '/images/logo_mw.png',
-      useLogoImage: true,
-    },
+    { quote: t.testimonials.quote1, author: '', company: 'MTN Cameroun', logo: '/images/MTN_logo-removebg-preview.png', useLogoImage: true },
+    { quote: t.testimonials.quote2, author: '', company: 'UBA Cameroun', logo: '/images/UBA_logo-removebg-preview.png', useLogoImage: true },
+    { quote: t.testimonials.quote3, author: t.testimonials.authorFranchise, company: t.testimonials.companyYaounde, logo: '/images/logo_mw.png', useLogoImage: true },
   ];
 
   // Carte de l'Afrique : contour discret + points lumineux + lignes en pointillés
@@ -133,13 +83,13 @@ export default function RoadmapTestimonialsSection() {
           {/* En-tête */}
           <div className="text-center mb-14 md:mb-20">
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-3">
-              NOTRE ROADMAP
+              {t.roadmap.label}
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Notre Roadmap
+              {t.roadmap.title}
             </h2>
             <p className="text-white text-base md:text-lg max-w-3xl mx-auto">
-              De la R&D au déploiement continental - une vision structurée sur 7 ans
+              {t.roadmap.subtitle}
             </p>
           </div>
 
@@ -274,13 +224,13 @@ export default function RoadmapTestimonialsSection() {
           {/* En-tête */}
           <div className="text-center mb-12 md:mb-16">
             <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-              TÉMOIGNAGES
+              {t.testimonials.label}
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
-              Ce que disent <span className="text-[#F9A825]">nos partenaires</span>
+              {t.testimonials.title}<span className="text-[#F9A825]">{t.testimonials.titleHighlight}</span>{t.testimonials.titleSuffix ? ` ${t.testimonials.titleSuffix}` : ''}
             </h2>
             <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
-              Ils nous font confiance et témoignent de leur expérience
+              {t.testimonials.subtitle}
             </p>
           </div>
 
@@ -356,7 +306,7 @@ export default function RoadmapTestimonialsSection() {
             <button
               onClick={prevTestimonial}
               className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors duration-200"
-              aria-label="Témoignage précédent"
+              aria-label={t.roadmap.prevTestimonial}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -365,7 +315,7 @@ export default function RoadmapTestimonialsSection() {
             <button
               onClick={nextTestimonial}
               className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors duration-200"
-              aria-label="Témoignage suivant"
+              aria-label={t.roadmap.nextTestimonial}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

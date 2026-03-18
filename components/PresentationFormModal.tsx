@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function PresentationFormModal() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [nomComplet, setNomComplet] = useState('');
   const [email, setEmail] = useState('');
@@ -55,10 +57,10 @@ export default function PresentationFormModal() {
       if (data.success) {
         setMessageEnvoye(true);
       } else {
-        setErreur(data.error || 'Une erreur est survenue.');
+        setErreur(data.error || t.contact.errorConnect);
       }
     } catch {
-      setErreur('Une erreur est survenue. Vérifiez votre connexion et réessayez.');
+      setErreur(t.contact.errorConnect);
     } finally {
       setLoading(false);
     }
@@ -84,7 +86,7 @@ export default function PresentationFormModal() {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          <span className="font-medium">Retour</span>
+          <span className="font-medium">{t.contact.back}</span>
         </button>
 
         <div className="flex justify-center mb-6">
@@ -92,15 +94,15 @@ export default function PresentationFormModal() {
         </div>
 
         <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
-          Accédez à notre présentation
+          {t.contact.title}
         </h2>
         <p className="text-gray-600 text-sm mb-6 text-center">
-          Renseignez vos coordonnées pour recevoir le document par email.
+          {t.contact.subtitle}
         </p>
 
         {messageEnvoye ? (
           <div className="bg-green-50 text-green-800 border border-green-200 rounded-lg p-4 mb-6">
-            ✓ Merci ! Votre demande a été envoyée. Vous recevrez le document par email.
+            {t.contact.success}
           </div>
         ) : (
           <>
@@ -112,7 +114,7 @@ export default function PresentationFormModal() {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="modal-nom" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                  NOM COMPLET
+                  {t.contact.nameLabel}
                 </label>
                 <input
                   id="modal-nom"
@@ -126,7 +128,7 @@ export default function PresentationFormModal() {
               </div>
               <div>
                 <label htmlFor="modal-email" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                  ADRESSE EMAIL
+                  {t.contact.emailLabel}
                 </label>
                 <input
                   id="modal-email"
@@ -143,7 +145,7 @@ export default function PresentationFormModal() {
                 disabled={loading}
                 className="w-full bg-[#F9A825] hover:bg-[#F57C00] text-black font-bold py-4 px-6 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {loading ? 'Envoi en cours...' : 'Recevoir le document →'}
+                {loading ? t.contact.sending : t.contact.submit}
               </button>
             </form>
           </>
@@ -151,7 +153,7 @@ export default function PresentationFormModal() {
 
         <div className="flex items-center gap-2 mt-6 text-gray-500 text-xs">
           <span>🔒</span>
-          <span>Vos données sont confidentielles et ne seront jamais partagées avec des tiers.</span>
+          <span>{t.contact.privacy}</span>
         </div>
       </div>
     </div>

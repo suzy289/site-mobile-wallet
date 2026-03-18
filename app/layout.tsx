@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "MobileWallet Incorporated | Infrastructure cashin et cashout en Afrique",
@@ -27,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body className="min-w-0 overflow-x-hidden antialiased">{children}</body>
+      <body className="min-w-0 overflow-x-hidden antialiased">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function DocumentationFormModal() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [nomComplet, setNomComplet] = useState('');
   const [email, setEmail] = useState('');
@@ -83,7 +85,7 @@ export default function DocumentationFormModal() {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          <span className="font-medium">Retour</span>
+          <span className="font-medium">{t.contact.back}</span>
         </button>
 
         <div className="flex items-center gap-3 mb-6">
@@ -92,15 +94,15 @@ export default function DocumentationFormModal() {
         </div>
 
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Accédez à notre documentation
+          {t.docModal.title}
         </h2>
         <p className="text-gray-600 text-sm mb-6">
-          Renseignez vos coordonnées pour recevoir la documentation complète par email.
+          {t.docModal.subtitle}
         </p>
 
         {messageEnvoye ? (
           <div className="bg-green-50 text-green-800 border border-green-200 rounded-lg p-4 mb-6">
-            ✓ Merci ! Votre demande a été envoyée. Vous recevrez la documentation par email.
+            {t.docModal.success}
           </div>
         ) : (
           <>
@@ -112,7 +114,7 @@ export default function DocumentationFormModal() {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="doc-modal-nom" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                  NOM COMPLET
+                  {t.contact.nameLabel}
                 </label>
                 <input
                   id="doc-modal-nom"
@@ -143,7 +145,7 @@ export default function DocumentationFormModal() {
                 disabled={loading}
                 className="w-full bg-[#F9A825] hover:bg-[#F57C00] text-black font-bold py-4 px-6 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {loading ? 'Envoi en cours...' : 'Recevoir la documentation →'}
+                {loading ? t.contact.sending : t.docModal.submit}
               </button>
             </form>
           </>
@@ -151,7 +153,7 @@ export default function DocumentationFormModal() {
 
         <div className="flex items-center gap-2 mt-6 text-gray-500 text-xs">
           <span>🔒</span>
-          <span>Vos données sont confidentielles et ne seront jamais partagées avec des tiers.</span>
+          <span>{t.contact.privacy}</span>
         </div>
       </div>
     </div>

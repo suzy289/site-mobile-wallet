@@ -3,49 +3,43 @@
 import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const ReassuranceIcon1 = () => (
+  <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+  </svg>
+);
+const ReassuranceIcon2 = () => (
+  <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+  </svg>
+);
+const ReassuranceIcon3 = () => (
+  <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+);
 
 export default function TeamSection() {
-  // Tous les membres de l'équipe (Direction, Management, Opérations, Dev) dans une seule liste
+  const { t } = useLanguage();
   const allTeamMembers = [
-    { name: 'Yvan Tadie', title: 'CEO', image: '/images/team/yvan-tadie.png', category: 'Direction' },
-    { name: 'Barrister Milton', title: 'Président du conseil d\'administration', image: '/images/team/barrister-milton-president.png', category: 'Opérations' },
-    { name: 'Blaise Valery Ndi', title: 'Chef des opérations', image: '/images/team/blaise-valery-ndi.png', category: 'Opérations' },
-    { name: 'Raymond Thinda', title: 'Chef comptable', image: '/images/team/raymond-thinda.png', category: 'Opérations' },
-    { name: 'Barrister Milton', title: 'Responsable de la conformité', image: '/images/team/barrister-milton-profile.png', category: 'Management' },
-    { name: 'Boris Tardezefe', title: 'Responsable technique des opérations sur le terrain', image: '/images/team/boris-tardezefe.png', category: 'Management' },
-    { name: 'Frank Merlin', title: 'Responsable de la conformité', image: '/images/team/frank-merlin.png', category: 'Management' },
-    { name: 'Amit Tiwary', title: 'Directeur du développement', image: '/images/team/Capture_d_écran_2026-03-06_141258-removebg-preview.png', category: 'Dev' },
-    { name: 'Priyanshu Singh', title: 'Responsable technique du développement', image: '/images/team/Capture_d_écran_2026-03-06_141729-removebg-preview.png', category: 'Dev', highlighted: true },
-    { name: 'Dogo Kingsley', title: 'Ingénieur réseau', image: '/images/team/Capture_d_écran_2026-03-06_141956-removebg-preview.png', category: 'Dev' },
-    { name: 'Suresh Release', title: 'Ingénieur de formation', image: '/images/team/Capture_d_écran_2026-03-06_142346-removebg-preview.png', category: 'Dev' },
+    { name: 'Yvan Tadie', titleKey: 'ceo' as const, image: '/images/team/yvan-tadie.png' },
+    { name: 'Blaise Valery Ndi', titleKey: 'coo' as const, image: '/images/team/blaise-valery-ndi.png' },
+    { name: 'Raymond Thinda', titleKey: 'accountant' as const, image: '/images/team/raymond-thinda.png' },
+    { name: 'Barrister Milton', titleKey: 'complianceOfficer' as const, image: '/images/team/barrister-milton-profile.png' },
+    { name: 'Boris Tardezefe', titleKey: 'techOpsLead' as const, image: '/images/team/boris-tardezefe.png' },
+    { name: 'Frank Merlin', titleKey: 'complianceOfficer' as const, image: '/images/team/frank-merlin.png' },
+    { name: 'Amit Tiwary', titleKey: 'devDirector' as const, image: '/images/team/Capture_d_écran_2026-03-06_141258-removebg-preview.png' },
+    { name: 'Priyanshu Singh', titleKey: 'techDevLead' as const, image: '/images/team/Capture_d_écran_2026-03-06_141729-removebg-preview.png', highlighted: true },
+    { name: 'Dogo Kingsley', titleKey: 'networkEngineer' as const, image: '/images/team/Capture_d_écran_2026-03-06_141956-removebg-preview.png' },
+    { name: 'Suresh Release', titleKey: 'trainingEngineer' as const, image: '/images/team/Capture_d_écran_2026-03-06_142346-removebg-preview.png' },
   ];
 
-  // Barre de réassurance (pilules : icône + texte sur la même ligne)
   const reassurance = [
-    {
-      icon: (
-        <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-        </svg>
-      ),
-      text: 'Équipe internationale',
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      ),
-      text: 'Expertise certifiée',
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      text: '7 ans d\'expérience terrain',
-    },
+    { icon: <ReassuranceIcon1 key="r1" />, text: t.team.reassurance[0] },
+    { icon: <ReassuranceIcon2 key="r2" />, text: t.team.reassurance[1] },
+    { icon: <ReassuranceIcon3 key="r3" />, text: t.team.reassurance[2] },
   ];
 
   // Carte carousel (style Axa Zara - slide scrollable)
@@ -127,13 +121,13 @@ export default function TeamSection() {
         {/* En-tête */}
         <div className="text-center mb-12 md:mb-16">
           <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-            NOTRE ÉQUIPE
+            {t.team.label}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
-            Les talents derrière MobileWallet
+            {t.team.title}
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
-            Une équipe internationale alliant expertise africaine, technologie et vision globale.
+            {t.team.subtitle}
           </p>
         </div>
         </AnimateOnScroll>
@@ -145,7 +139,7 @@ export default function TeamSection() {
             type="button"
             onClick={scrollLeft}
             className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gray-100 hover:bg-[#F9A825] text-gray-700 hover:text-white flex items-center justify-center transition-colors shadow-md hover:shadow-lg"
-            aria-label="Précédent"
+            aria-label={t.team.prev}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -160,9 +154,9 @@ export default function TeamSection() {
             <div className="flex gap-6 md:gap-8 pb-4 justify-center md:justify-start px-4" style={{ minWidth: 'min-content' }}>
               {allTeamMembers.map((member, index) => (
                 <TeamCarouselCard
-                  key={`${member.name}-${member.title}-${index}`}
+                  key={`${member.name}-${member.titleKey}-${index}`}
                   name={member.name}
-                  title={member.title}
+                  title={t.team.titles[member.titleKey]}
                   image={member.image}
                   highlighted={!!(member as { highlighted?: boolean }).highlighted}
                 />
@@ -175,7 +169,7 @@ export default function TeamSection() {
             type="button"
             onClick={scrollRight}
             className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gray-100 hover:bg-[#F9A825] text-gray-700 hover:text-white flex items-center justify-center transition-colors shadow-md hover:shadow-lg"
-            aria-label="Suivant"
+            aria-label={t.team.next}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -1,116 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ComparisonSection() {
-  // Données de comparaison pour les Utilisateurs
-  const userComparison = [
-    {
-      ourSystem: 'Service disponible 24H/7J',
-      classicSystem: 'Service disponible 08H-19H seulement',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Transaction rapide',
-      classicSystem: 'Transaction rapide',
-      classicStatus: 'similar',
-    },
-    {
-      ourSystem: 'Interface ergonomique',
-      classicSystem: 'Très peu ergonomique',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Sécurité renforcée',
-      classicSystem: 'Très peu sécurisé',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Cartographie Maps des Points',
-      classicSystem: 'Aucune cartographie des PDV',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Frais de retraits et dépôts fixes',
-      classicSystem: 'Limité en terme de choix',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Tous les services au même endroit',
-      classicSystem: 'Non disponible',
-      classicStatus: 'unavailable',
-    },
-  ];
-
-  // Données de comparaison pour les Franchisés
-  const franchiseeComparison = [
-    {
-      ourSystem: '100% Automatique',
-      classicSystem: '100% Humains',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Scalable',
-      classicSystem: 'Difficilement scalable',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Sécurisé',
-      classicSystem: 'Moyennement sécurisé',
-      classicStatus: 'similar',
-    },
-    {
-      ourSystem: 'Contrôle à distance',
-      classicSystem: 'Contrôle sur site uniquement',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'ROI dès 1,5 ans',
-      classicSystem: 'ROI dès 04 ans',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Déploiement complet rapide',
-      classicSystem: 'Déploiement complet plus lent',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Multi opérateurs',
-      classicSystem: 'Limité à certains',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Multi services',
-      classicSystem: 'Limité au mobile money',
-      classicStatus: 'cross',
-    },
-  ];
-
-  // Données de comparaison pour les Institutions Financières
-  const institutionComparison = [
-    {
-      ourSystem: 'Capte les flux Mobile Money via GAB existants',
-      classicSystem: 'Système hermétique aux GAB Bancaires',
-      classicStatus: 'cross',
-    },
-    {
-      ourSystem: 'Multiplie les revenus du réseau de GAB',
-      classicSystem: 'RAS',
-      classicStatus: 'unavailable',
-    },
-    {
-      ourSystem: 'Transforme les GAB existants en GAB tout-en-un',
-      classicSystem: 'Non disponible',
-      classicStatus: 'unavailable',
-    },
-  ];
-
-  // Tags de services (3 groupes comme sur la maquette)
-  const synthesisTags = [
-    'MTN - Orange - Wave - M-Pesa - Airtel',
-    'Eneo - Camwater - Canal+ - Factures',
-    'Clé en main pour franchisés & institutions',
-  ];
+  const { t } = useLanguage();
+  const userComparison = t.comparison.userRows.map((r) => ({ ourSystem: r.our, classicSystem: r.classic, classicStatus: r.status }));
+  const franchiseeComparison = t.comparison.franchiseeRows.map((r) => ({ ourSystem: r.our, classicSystem: r.classic, classicStatus: r.status }));
+  const institutionComparison = t.comparison.institutionRows.map((r) => ({ ourSystem: r.our, classicSystem: r.classic, classicStatus: r.status }));
+  const synthesisTags = t.comparison.synthesisTags;
 
   // Fonction pour afficher l'icône selon le statut (colonne système classique)
   const renderStatusIcon = (status: string) => {
@@ -158,10 +56,10 @@ export default function ComparisonSection() {
           <svg className="w-5 h-5 flex-shrink-0 text-[#F9A825]" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
-          <p className="text-white font-bold text-sm md:text-base uppercase tracking-wide">Avec notre système</p>
+          <p className="text-white font-bold text-sm md:text-base uppercase tracking-wide">{t.comparison.withOurSystem}</p>
         </div>
         <div className="bg-gray-100 p-3 md:p-4 border-l border-gray-200">
-          <p className="text-gray-800 font-bold text-sm md:text-base uppercase tracking-wide opacity-70">Avec le système classique</p>
+          <p className="text-gray-800 font-bold text-sm md:text-base uppercase tracking-wide opacity-70">{t.comparison.withClassic}</p>
         </div>
       </div>
       
@@ -200,13 +98,13 @@ export default function ComparisonSection() {
         {/* En-tête */}
         <div className="text-center mb-12 md:mb-16">
           <p className="text-[#F9A825] text-sm md:text-base font-semibold uppercase tracking-wider mb-4">
-            COMPARAISON
+            {t.comparison.label}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
-            Ce que notre solution change
+            {t.comparison.title}
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-            Une rupture technologique face aux systèmes classiques — pour les utilisateurs, les franchisés et les institutions financières
+            {t.comparison.subtitle}
           </p>
         </div>
 
@@ -214,13 +112,13 @@ export default function ComparisonSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8">
           {/* Bloc A : Pour les Utilisateurs (Haut Gauche) */}
           <ComparisonBlock 
-            title="Pour les Utilisateurs" 
+            title={t.comparison.forUsers} 
             data={userComparison}
           />
 
           {/* Bloc B : Pour les Franchisés (Haut Droite) */}
           <ComparisonBlock 
-            title="Pour les Franchisés" 
+            title={t.comparison.forFranchisees} 
             data={franchiseeComparison}
           />
         </div>
@@ -229,7 +127,7 @@ export default function ComparisonSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {/* Bloc C : Pour les Institutions Financières (Bas Gauche) */}
           <ComparisonBlock 
-            title="Pour les Institutions Financières" 
+            title={t.comparison.forInstitutions} 
             data={institutionComparison}
           />
 
@@ -249,7 +147,7 @@ export default function ComparisonSection() {
             {/* Contenu */}
             <div className="relative z-10">
               <p className="text-white text-base md:text-lg leading-relaxed mb-10 md:mb-12 pl-10 md:pl-14 italic">
-                Notre solution est pensée pour les réalités du marché en Afrique — plusieurs opérateurs mobiles money (MTN Mobile Money, Orange Money, Wave, M-Pesa, Airtel Money), les services Money des banques (M2U de UBA, Sara Money de Afriland), et plusieurs services (paiement de factures, Eneo, Camwater, Canal+, et bien d&apos;autres). Tout en un, une solution clé en main pour les franchisés, une mise à jour de valeur pour les institutions, et une expérience tout-en-un qui crée une habitude pour les utilisateurs.
+                {t.comparison.synthesisQuote}
               </p>
 
               {/* 3 tags en pilule : bordure orange, texte blanc */}
