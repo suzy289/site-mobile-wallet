@@ -6,7 +6,7 @@ import { translations } from '@/lib/translations';
 
 const STORAGE_KEY = 'mobilewallet-language';
 
-type TranslationKeys = typeof translations.fr;
+type TranslationKeys = typeof translations.fr | typeof translations.en;
 
 const LanguageContext = createContext<{
   language: Language;
