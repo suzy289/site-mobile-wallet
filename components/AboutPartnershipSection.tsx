@@ -9,8 +9,8 @@ export default function AboutPartnershipSection() {
   const { t } = useLanguage();
   const openPresentationModal = () => window.dispatchEvent(new CustomEvent('openPresentationModal'));
   const missionsAndVisions = [
-    { label: t.about.mission, title: t.about.missionText },
     { label: t.about.vision, title: t.about.visionText },
+    { label: t.about.mission, title: t.about.missionText },
   ];
 
   const partnershipPlans = [
