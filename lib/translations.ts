@@ -163,7 +163,7 @@ export const translations = {
       quote2: "Les GAB et l'interface de Mobile Wallet sont les leviers parfaits pour rendre notre solution UBA M2U accessible à tous. Ce partenariat s'est imposé comme une évidence, car il nous permet de toucher le plus grand nombre tout en assurant une sécurité digne de nos propres guichets bancaires UBA.",
       quote3: "En tant que super agent, la gestion d'un réseau humain a toujours impliqué des failles de sécurité trop importantes. La solution Mobile Wallet me permet d'éradiquer les risques de vol et de sécuriser entièrement mes flux. Je peux enfin me concentrer sur l'essentiel : l'expansion de mon activité et l'ouverture d'un maximum de points de service, une croissance qui était jusqu'ici trop complexe et risquée à gérer.",
       authorFranchise: 'Franchisé indépendant',
-      companyYaounde: 'Réseau MobileWallet - Yaoundé',
+      companyYaounde: 'Réseau MobileWallet - Limbe',
     },
     security: {
       label: 'Confiance & Sécurité',
@@ -515,7 +515,7 @@ export const translations = {
       quote2: "The ATMs and Mobile Wallet interface are the perfect levers to make our UBA M2U solution accessible to all. This partnership was an obvious choice, as it allows us to reach the greatest number while ensuring security worthy of our own UBA banking counters.",
       quote3: "As a super agent, managing a human network has always involved security gaps that were too significant. The Mobile Wallet solution allows me to eliminate theft risks and fully secure my flows. I can finally focus on what matters: expanding my activity and opening a maximum of service points, growth that was until now too complex and risky to manage.",
       authorFranchise: 'Independent franchisee',
-      companyYaounde: 'MobileWallet Network - Yaoundé',
+      companyYaounde: 'MobileWallet Network - Limbe',
     },
     security: {
       label: 'Trust & Security',
